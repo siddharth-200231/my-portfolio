@@ -1,5 +1,5 @@
 <template>
-    <div class="relative min-h-[60vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+    <div class="relative min-h-[60vh] md:min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
       <!-- Updated Gradient Background -->
       <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-95"></div>
   
@@ -16,13 +16,17 @@
           src="/assets/images/profile.jpeg"
           alt="Profile Picture"
         />
-        <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s">Hi, I'm Siddharth Sahu</h1>
+        <!-- Text size adjusted for smaller screens -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s">
+          Hi, I'm Siddharth Sahu
+        </h1>
         <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate__animated animate__slideInUp animate__delay-0.7s">
           A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
         </p>
+        <!-- Button adjusted for smaller screens -->
         <nuxt-link
           to="/projects"
-          class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 sm:py-3 sm:px-6 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 animate__animated animate__pulse animate__delay-0.9s"
+          class="bg-green-600 hover:bg-green-500 text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 animate__animated animate__pulse animate__delay-0.9s"
         >
           Explore My Work
         </nuxt-link>
@@ -44,7 +48,7 @@
         canvas.height = window.innerHeight;
   
         let particles = [];
-        const particleCount = 150; // Adjust number of particles here
+        const particleCount = 150;
         const colors = [
           "rgba(255, 99, 132, 0.7)", // Red
           "rgba(54, 162, 235, 0.7)", // Blue
