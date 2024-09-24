@@ -1,5 +1,5 @@
 <template>
-    <div class="relative min-h-[60vh] md:min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+    <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
       <!-- Updated Gradient Background -->
       <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-95"></div>
   
