@@ -24,6 +24,12 @@
             I've worked on various projects, including secure e-commerce platforms and machine learning applications. Check out my work in the <nuxt-link to="/projects" class="text-green-400 underline hover:text-green-300 transition duration-300">Projects</nuxt-link> section.
           </p>
         </div>
+        <div class="mt-6">
+          <h2 class="text-2xl font-semibold text-green-400 mb-2 animate__animated animate__fadeIn animate__delay-3s">LeetCode Profile</h2>
+          <p class="mt-2 text-gray-300 animate__animated animate__fadeIn animate__delay-3.5s">
+            Check out my coding challenges and contributions on <a href="https://leetcode.com/u/siddharth_123456/" class="text-green-400 underline hover:text-green-300 transition duration-300" target="_blank">LeetCode</a>.
+          </p>
+        </div>
       </div>
     </div>
   </template>
