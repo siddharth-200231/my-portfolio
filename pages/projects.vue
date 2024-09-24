@@ -159,6 +159,90 @@
       opacity: 0.7;
     }
   }
+  /* Neon Particle Background */
+#particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1));
+}
+
+/* Project Card Styles */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1c1c1e, #2b2b2f);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 0, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(255, 0, 255, 0.7), 0 0 30px rgba(255, 0, 255, 0.7);
+}
+
+/* Background Animation */
+.bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  animation: pulse 3s infinite;
+  z-index: 1;
+}
+
+/* Image Styles */
+.project-card img {
+  transition: transform 0.3s ease;
+  z-index: 2; /* Ensures the image is above the background animation */
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Heading Styles */
+h3 {
+  position: relative;
+  z-index: 2; /* Ensures text is above the overlay */
+  color: #00ffcc; /* Neon cyan color */
+  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+/* Pulsating Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+/* Live Link Styles */
+a {
+  color: #ff77ff; /* Neon magenta color */
+  text-shadow: 0 0 5px #ff77ff, 0 0 10px #ff77ff, 0 0 20px #ff77ff;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffffff; /* Change color on hover */
+}
+
   
   @import "~animate.css/animate.min.css"; /* Ensure to install animate.css via npm or link in your project */
   </style>
