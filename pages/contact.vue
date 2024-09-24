@@ -15,18 +15,33 @@
         </div>
         <div class="mt-4">
           <h2 class="text-2xl font-semibold">LinkedIn:</h2>
-          <p class="text-gray-500"><a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="text-green-400 hover:underline">https://www.linkedin.com/in/siddharth-sahu-40aa57289/</a></p>
+          <p class="text-gray-500">
+            <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="text-green-400 hover:underline">https://www.linkedin.com/in/siddharth-sahu-40aa57289/</a>
+          </p>
+        </div>
+        <div class="mt-4">
+          <h2 class="text-2xl font-semibold">GitHub:</h2>
+          <p class="text-gray-500">
+            <a href="https://github.com/siddharth-200231" class="text-green-400 hover:underline">https://github.com/siddharth-200231</a>
+          </p>
+        </div>
+        <div class="mt-4">
+          <h2 class="text-2xl font-semibold">LeetCode:</h2>
+          <p class="text-gray-500">
+            <a href="https://leetcode.com/u/siddharth_123456/" class="text-green-400 hover:underline">https://leetcode.com/u/siddharth_123456/</a>
+          </p>
         </div>
       </div>
     </div>
-</template>
-
-<script>
-export default {
-  name: "Contact",
-};
-</script>
-
-<style scoped>
-/* Add styles specific to the contact page here */
-</style>
+  </template>
+  
+  <script>
+  export default {
+    name: "Contact",
+  };
+  </script>
+  
+  <style scoped>
+  /* Add styles specific to the contact page here */
+  </style>
+  
