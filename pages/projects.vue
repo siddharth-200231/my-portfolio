@@ -1,15 +1,16 @@
 <template>
     <div class="relative min-h-screen bg-gray-900 text-gray-100">
       <!-- Animated Particle Background -->
-      <div class="absolute inset-0 z-0 overflow-hidden">
-        <div class="particles"></div>
+      <div class="absolute inset-0 z-0">
+        <canvas id="particles"></canvas>
       </div>
   
       <div class="container mx-auto p-6 z-10">
         <h1 class="text-4xl font-bold mb-6 text-center animate__animated animate__fadeIn">Projects</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.2s">
-            <img src="../assets/images/ecomm.png" alt="E-Commerce Platform" class="w-full h-40 object-contain rounded-t-lg" />
+            <div class="bg-animation"></div>
+            <img src="../assets/images/ecomm.png" alt="E-Commerce Platform" class="w-full h-40 object-contain  rounded-t-lg transition-transform duration-300 transform hover:scale-105" />
             <div class="p-4">
               <h3 class="text-2xl font-bold mb-2 text-blue-500">Secure E-Commerce Platform</h3>
               <p class="text-gray-300 mb-4">
@@ -18,8 +19,9 @@
               <a href="https://siddstore.vercel.app" class="text-green-400 hover:underline">Live Link</a>
             </div>
           </div>
-          <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.4s">
-            <img src="../assets/images/loginn.jpeg" alt="User Authentication System" class="w-full h-40 object-contain rounded-t-lg" />
+          <div class="project-card animate__animated animate__fadeInUp animate__delay-0.4s">
+            <div class="bg-animation"></div>
+            <img src="../assets/images/loginn.jpeg" alt="User Authentication System" class="w-full h-40 object-contain rounded-t-lg transition-transform duration-300 transform hover:scale-105" />
             <div class="p-4">
               <h3 class="text-2xl font-bold mb-2 text-blue-500">User Authentication System</h3>
               <p class="text-gray-300 mb-4">
@@ -27,8 +29,9 @@
               </p>
             </div>
           </div>
-          <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.6s">
-            <img src="../assets/images/download.jpeg" alt="Heart Disease Detection Model" class="w-full h-40 object-contain rounded-t-lg" />
+          <div class="project-card animate__animated animate__fadeInRight animate__delay-0.6s">
+            <div class="bg-animation"></div>
+            <img src="../assets/images/download.jpeg" alt="Heart Disease Detection Model" class="w-full h-40 object-contain  rounded-t-lg transition-transform duration-300 transform hover:scale-105" />
             <div class="p-4">
               <h3 class="text-2xl font-bold mb-2 text-blue-500">Heart Disease Detection Model</h3>
               <p class="text-gray-300 mb-4">
@@ -42,71 +45,118 @@
   </template>
   
   <script>
-  export default {};
+  export default {
+    mounted() {
+      this.initParticles();
+    },
+    methods: {
+      initParticles() {
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+  
+        let particles = [];
+        const particleCount = 150; // Adjust number of particles here
+  
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 3 + 1,
+            velocity: {
+              x: (Math.random() - 0.5) * 2,
+              y: (Math.random() - 0.5) * 2,
+            },
+          });
+        }
+  
+        const animateParticles = () => {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let particle of particles) {
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+            ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+            ctx.fill();
+  
+            particle.x += particle.velocity.x;
+            particle.y += particle.velocity.y;
+  
+            if (particle.x > canvas.width || particle.x < 0) particle.velocity.x *= -1;
+            if (particle.y > canvas.height || particle.y < 0) particle.velocity.y *= -1;
+          }
+          requestAnimationFrame(animateParticles);
+        };
+  
+        animateParticles();
+      },
+    },
+  };
   </script>
   
   <style scoped>
-  .relative {
-    position: relative;
-  }
-  
-  .particles {
+  #particles {
     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 20%, rgba(0,0,0,0) 80%);
-    animation: particles-animation 10s infinite linear;
-  }
-  
-  @keyframes particles-animation {
-    0% {
-      background-position: 0% 0%;
-    }
-    100% {
-      background-position: 100% 100%;
-    }
   }
   
   .project-card {
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(145deg, #2a2d34, #1f2937);
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    overflow: hidden;
-    color: white;
-    position: relative; /* For the pseudo-element */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   
-  .project-card:before {
-    content: '';
+  .project-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  }
+  
+  .bg-animation {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    transition: opacity 0.3s;
-    opacity: 0;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    animation: pulse 3s infinite;
     z-index: 1;
   }
   
-  .project-card:hover:before {
-    opacity: 1; /* Adds a subtle overlay on hover */
+  .project-card img {
+    transition: transform 0.3s ease;
+    z-index: 2; /* Ensures the image is above the background animation */
   }
   
-  .project-card:hover {
-    transform: translateY(-5px) scale(1.03); /* Slight scale effect on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  .project-card:hover img {
+    transform: scale(1.05);
   }
   
-  .project-card h3 {
+  h3 {
     position: relative;
     z-index: 2; /* Ensures text is above the overlay */
   }
   
-  /* Hover animation */
-  .project-card:hover {
-    background: linear-gradient(145deg, #1f2937, #2a2d34);
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
   }
   
   @import "~animate.css/animate.min.css"; /* Ensure to install animate.css via npm or link in your project */

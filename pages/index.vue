@@ -1,34 +1,32 @@
 <template>
-    <div class="relative min-h-screen flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+    <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
       <!-- Updated Gradient Background -->
       <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-95"></div>
   
       <!-- Particle Background -->
-      <canvas id="particles" class="absolute inset-0 z-0"></canvas>
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <canvas id="particles" class="absolute inset-0"></canvas>
+      </div>
   
       <!-- Content Section -->
       <div class="z-10 text-center">
+        <!-- Responsive Image -->
         <img
-          class="rounded-full mx-auto w-40 h-40 mb-6 object-cover border-4 border-purple-600 transform transition-transform duration-500 hover:scale-110 animate__animated animate__fadeIn"
+          class="rounded-full mx-auto w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 mb-6 object-cover border-4 border-purple-600 transform transition-transform duration-500 hover:scale-110 animate__animated animate__fadeIn"
           src="/assets/images/profile.jpeg"
           alt="Profile Picture"
         />
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s">Hi, I'm Siddharth Sahu</h1>
+        <h1 class="text-2xl sm:text-4xl md:text-5xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s">Hi, I'm Siddharth Sahu</h1>
         <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate__animated animate__slideInUp animate__delay-0.7s">
           A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
         </p>
         <nuxt-link
           to="/projects"
-          class="bg-green-600 hover:bg-green-500 text-white py-3 px-6 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 animate__animated animate__pulse animate__delay-0.9s"
+          class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 sm:py-3 sm:px-6 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 animate__animated animate__pulse animate__delay-0.9s"
         >
           Explore My Work
         </nuxt-link>
       </div>
-  
-      <!-- Footer -->
-      <footer class="z-10 mt-20 text-center text-gray-400 animate__animated animate__slideInUp animate__delay-1.1s">
-        © 2024 Siddharth Sahu - All Rights Reserved
-      </footer>
     </div>
   </template>
   
