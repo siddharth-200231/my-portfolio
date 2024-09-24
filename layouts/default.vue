@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen flex flex-col bg-gray-900 text-gray-200 relative overflow-hidden">
+    <div class="min-h-screen flex flex-col bg-gray-900 text-gray-200 relative overflow-hidden">
       <!-- Global Header -->
       <header class="bg-gray-900 text-gray-300 p-2 shadow-lg relative z-10 w-full animate__animated animate__fadeInDown">
         <nav class="container mx-auto flex justify-between items-center animate-nav-slide-down">
