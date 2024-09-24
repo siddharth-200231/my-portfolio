@@ -24,7 +24,7 @@
       </h1>
 
       <p
-        class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate-text-glow animate__animated animate__slideInUp animate__delay-0.7s">
+        class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate__animated animate__slideInUp animate__delay-0.7s">
         A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
       </p>
 
@@ -52,7 +52,7 @@ export default {
       canvas.height = window.innerHeight;
 
       let particles = [];
-      const particleCount = 120; // Reduced number of particles for better performance
+      const particleCount = 80; // Reduced number of particles for better performance
       const colors = [
         "rgba(255, 99, 132, 0.7)", // Red
         "rgba(54, 162, 235, 0.7)", // Blue
@@ -97,6 +97,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 /* Canvas for particles */
