@@ -16,7 +16,8 @@
               <p class="text-gray-300 mb-4">
                 Developed a secure e-commerce platform using React, Node.js, Express.js, and MongoDB, with JWT-based authentication and bcrypt password encryption.
               </p>
-              <a href="https://siddstore.vercel.app" class="text-green-400 hover:underline">Live Link</a>
+              <a :href="'https://siddstore.vercel.app'" class="text-green-400 hover:underline">Live Link</a>
+
             </div>
           </div>
           <div class="project-card animate__animated animate__fadeInUp animate__delay-0.4s">
