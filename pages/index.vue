@@ -17,12 +17,14 @@
           alt="Profile Picture"
         />
         <!-- Text size adjusted for smaller screens -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s">
-          Hi, I'm Siddharth Sahu
-        </h1>
-        <p class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate__animated animate__slideInUp animate__delay-0.7s">
-          A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
-        </p>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-indigo-300 animate__animated animate__slideInUp animate__delay-0.5s glow-effect">
+  Hi, I'm Siddharth Sahu
+</h1>
+
+<p class="text-base sm:text-lg md:text-xl mb-8 text-gray-200 animate__animated animate__slideInUp animate__delay-0.7s glow-effect">
+  A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
+</p>
+
         <!-- Button adjusted for smaller screens -->
         <nuxt-link
           to="/projects"
@@ -102,6 +104,20 @@
     left: 0;
     z-index: 0;
   }
+ /* Glow Animation */
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px #4c51bf, 0 0 20px #4c51bf, 0 0 30px #4c51bf;
+  }
+  50% {
+    text-shadow: 0 0 20px #4c51bf, 0 0 30px #4c51bf, 0 0 40px #4c51bf;
+  }
+}
+
+.glow-effect {
+  animation: text-glow 2s infinite ease-in-out;
+}
+
   
   /* Add animations from Animate.css */
   @import "~animate.css/animate.min.css"; /* Ensure to install animate.css via npm or link in your project */
