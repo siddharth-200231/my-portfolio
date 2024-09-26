@@ -8,7 +8,7 @@
       <!-- Responsive Image -->
       <img
         class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-neon-pink transform transition-transform duration-500 hover:scale-110 animate__animated animate__fadeIn"
-        src="../assets/images/2151136786.jpg"
+        src="../assets/images/pp.jpeg"
         alt="Profile Picture"
       />
       <!-- Text size adjusted for smaller screens -->
