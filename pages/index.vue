@@ -7,7 +7,7 @@
       <!-- Profile Image -->
       <img
         class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-neon-pink"
-        src="../assets/images/WhatsApp Image 2024-09-24 at 15.20.37.jpeg"
+        src="../assets/images/newpp.jpg"
         alt="Profile Picture"
         style="object-fit: contain;"
       />
@@ -18,9 +18,10 @@
         <div class="console-underscore" id="console">&#95;</div>
       </div>
 
-      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-orange">
-        A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
-      </p>
+      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-white">
+  A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
+</p>
+
 
       <nuxt-link
         to="/projects"
@@ -171,6 +172,15 @@ body {
 .hidden {
   opacity: 0;
 }
+.text-neon-white {
+  color: #FFFFFF; /* White color */
+  text-shadow: 
+    0 0 15px #FFFFFF,    /* White glow */
+    0 0 25px #FFFFFF,    /* Brighter white glow */
+    0 0 30px #00BFFF,    /* Light Blue glow */
+    0 0 40px #00BFFF;     /* Brighter light blue glow */
+}
+
 
 .console-underscore {
   display: inline-block;
