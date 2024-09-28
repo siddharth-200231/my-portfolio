@@ -42,7 +42,9 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.initParticles();
+    if (window.innerWidth > 768) {
+      this.initParticles(); // Run particles only on larger screens
+    }
   },
   methods: {
     initParticles() {
@@ -52,7 +54,7 @@ export default {
       canvas.height = window.innerHeight;
 
       let particles = [];
-      const particleCount = 80; // Reduced number of particles for better performance
+      const particleCount = 50; // Reduced particle count
       const colors = [
         "rgba(255, 99, 132, 0.7)", // Red
         "rgba(54, 162, 235, 0.7)", // Blue
@@ -68,8 +70,8 @@ export default {
           radius: Math.random() * 4 + 2, // Size of the particles
           color: colors[Math.floor(Math.random() * colors.length)],
           velocity: {
-            x: (Math.random() - 0.5) * 3, // Increased velocity for faster movement
-            y: (Math.random() - 0.5) * 3,
+            x: (Math.random() - 0.5) * 1.5, // Reduced velocity for smoother movement
+            y: (Math.random() - 0.5) * 1.5,
           },
         });
       }
@@ -98,7 +100,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 /* Canvas for particles */
 #particles {
@@ -112,11 +113,11 @@ export default {
 @keyframes text-glow {
   0%,
   100% {
-    text-shadow: 0 0 7px #4c51bf, 0 0 12px #4c51bf, 0 0 20px #4c51bf;
+    text-shadow: 0 0 5px #4c51bf, 0 0 10px #4c51bf;
   }
 
   50% {
-    text-shadow: 0 0 14px #4c51bf, 0 0 28px #4c51bf, 0 0 36px #4c51bf;
+    text-shadow: 0 0 10px #4c51bf, 0 0 20px #4c51bf;
   }
 }
 
