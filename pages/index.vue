@@ -1,11 +1,11 @@
 <template>
-   <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-95"></div>
+  <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800 opacity-95"></div>
 
     <div class="z-10 text-center">
       <!-- Profile Image -->
       <img
-        class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-purple-600"
+        class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-neon-pink"
         src="../assets/images/WhatsApp Image 2024-09-24 at 15.20.37.jpeg"
         alt="Profile Picture"
         style="object-fit: contain;"
@@ -17,17 +17,16 @@
         <div class="console-underscore" id="console">&#95;</div>
       </div>
 
-      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-blue">
+      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-teal">
         A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
       </p>
 
       <nuxt-link
-  to="/projects"
-  class="bg-neon-green hover:bg-neon-dark-green text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 text-black hover:text-white"
->
-  Explore My Work
-</nuxt-link>
-
+        to="/projects"
+        class="bg-neon-purple hover:bg-neon-dark-purple text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 text-black hover:text-white"
+      >
+        Explore My Work
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -36,7 +35,7 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#39FF14', '#00FFFF']); // Change colors to neon
+    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#FF00FF', '#00FFFF']); // Change colors to neon pink and cyan
     this.initParticles(); // Call to init particles
   },
   methods: {
@@ -96,11 +95,11 @@ export default {
       let particles = [];
       const particleCount = 50;
       const colors = [
-        "rgba(255, 99, 132, 0.7)",
-        "rgba(54, 162, 235, 0.7)",
-        "rgba(255, 206, 86, 0.7)",
-        "rgba(75, 192, 192, 0.7)",
-        "rgba(153, 102, 255, 0.7)",
+        "rgba(255, 0, 255, 0.7)",  // Neon Pink
+        "rgba(0, 255, 255, 0.7)",  // Neon Cyan
+        "rgba(255, 105, 180, 0.7)",  // Hot Pink
+        "rgba(75, 192, 192, 0.7)",  // Teal
+        "rgba(102, 51, 153, 0.7)",  // Purple
       ];
 
       for (let i = 0; i < particleCount; i++) {
@@ -155,39 +154,27 @@ body {
   text-align: center;
   max-width: 600px;
   margin: auto;
-  text-shadow: 0 0 10px #00FFFF, 0 0 20px #39FF14; /* Neon glow effect */
+  text-shadow: 0 0 10px #00FFFF, 0 0 20px #FF00FF; /* Neon cyan and pink glow */
 }
 
-.text-neon-blue {
-  color: #1E90FF; /* Bright neon blue for description */
-  text-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF;
+.text-neon-teal {
+  color: #00FFCC; /* Bright neon teal for description */
+  text-shadow: 0 0 10px #00FFCC, 0 0 20px #00B3A3; /* Teal glow effect */
 }
 
 /* Explore button styles */
-.bg-neon-gradient {
-  background: linear-gradient(135deg, #39FF14, #00FF00);
-  box-shadow: 0 0 15px #39FF14, 0 0 30px #00FF00, 0 0 45px #39FF14;
+.bg-neon-purple {
+  background-color: #9400D3; /* Neon purple for button */
+  box-shadow: 0 0 15px #9400D3, 0 0 30px #8A2BE2, 0 0 45px #9400D3;
 }
 
-.bg-neon-dark-green:hover {
-  background: linear-gradient(135deg, #228B22, #006400);
-  box-shadow: 0 0 10px #228B22, 0 0 20px #006400;
+.bg-neon-dark-purple:hover {
+  background-color: #8A2BE2; /* Darker purple on hover */
+  box-shadow: 0 0 10px #8A2BE2, 0 0 20px #4B0082;
 }
 
 .hidden {
   opacity: 0;
-}
-
-.console-container {
-  font-family: 'Khula', sans-serif;
-  font-size: 2em; /* Adjusted size for smaller screens */
-  text-align: center;
-  height: auto; /* Allow height to adjust */
-  width: 100%; /* Full width */
-  max-width: 600px; /* Limit max width */
-  color: white; /* Change the base text color */
-  margin: auto;
-  text-shadow: 0 0 10px #00FFFF, 0 0 20px #39FF14; /* Neon glow effect */
 }
 
 .console-underscore {
@@ -198,36 +185,26 @@ body {
   animation: blink 0.7s infinite; /* Blink effect for underscore */
 }
 
-.text-neon-blue {
-  color: #1E90FF; /* Bright neon blue for the description text */
-  text-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF; /* Neon glow effect */
+.bg-neon-pink {
+  background-color: #FF00FF; /* Neon pink for image border */
 }
 
-.bg-neon-green {
-  background-color: #39FF14; /* Neon green for the button */
-}
-
-.bg-neon-dark-green {
-  background-color: #32CD32; /* Darker neon green on hover */
-}
 .bg-neon-green {
   background-color: #39FF14; /* Neon green */
-  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14; /* Neon glow effect */
+  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14;
 }
 
-.bg-neon-dark-green {
-  background-color: #32CD32; /* Darker neon green */
-  box-shadow: 0 0 15px #32CD32, 0 0 25px #32CD32, 0 0 35px #32CD32; /* More intense glow on hover */
+.bg-neon-dark-green:hover {
+  background-color: #32CD32;
 }
 
 .text-black {
-  color: #000; /* Black text for better contrast on bright green button */
+  color: #000;
 }
 
 .text-white:hover {
-  color: #fff; /* White text on hover */
+  color: #fff;
 }
-
 
 #particles {
   position: absolute;
