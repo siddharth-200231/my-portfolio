@@ -1,6 +1,7 @@
 <template>
   <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800 opacity-95"></div>
+    <canvas id="particles" class="absolute inset-0"></canvas>
+    <div class="absolute inset-0 bg-gradient-to-b from-black to-gray-900 opacity-95"></div>
 
     <div class="z-10 text-center">
       <!-- Profile Image -->
@@ -17,7 +18,7 @@
         <div class="console-underscore" id="console">&#95;</div>
       </div>
 
-      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-teal">
+      <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-orange">
         A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
       </p>
 
@@ -35,8 +36,8 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#FF00FF', '#00FFFF']); // Change colors to neon pink and cyan
-    this.initParticles(); // Call to init particles
+    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#FFD700', '#7FFF00']); // Neon Gold and Neon Green
+    this.initParticles();
   },
   methods: {
     consoleText(words, id, colors) {
@@ -95,11 +96,11 @@ export default {
       let particles = [];
       const particleCount = 50;
       const colors = [
-        "rgba(255, 0, 255, 0.7)",  // Neon Pink
-        "rgba(0, 255, 255, 0.7)",  // Neon Cyan
-        "rgba(255, 105, 180, 0.7)",  // Hot Pink
-        "rgba(75, 192, 192, 0.7)",  // Teal
-        "rgba(102, 51, 153, 0.7)",  // Purple
+        "rgba(255, 20, 147, 0.9)",  // Brighter Hot Pink
+        "rgba(0, 255, 255, 0.9)",   // Bright Cyan
+        "rgba(255, 165, 0, 0.9)",   // Bright Orange
+        "rgba(50, 205, 50, 0.9)",   // Lime Green
+        "rgba(138, 43, 226, 0.9)",  // Brighter Purple
       ];
 
       for (let i = 0; i < particleCount; i++) {
@@ -140,12 +141,7 @@ export default {
 
 <style scoped>
 body {
-  background: #111; /* Dark background to blend with the theme */
-}
-
-/* Background gradient for index page */
-.bg-dark-gradient {
-  background: radial-gradient(circle, rgba(34, 34, 34, 1) 0%, rgba(12, 12, 12, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  background: #000; /* Change to pure black for a darker background */
 }
 
 .console-container {
@@ -154,23 +150,22 @@ body {
   text-align: center;
   max-width: 600px;
   margin: auto;
-  text-shadow: 0 0 10px #00FFFF, 0 0 20px #FF00FF; /* Neon cyan and pink glow */
+  text-shadow: 0 0 15px #FFD700, 0 0 25px #7FFF00;
 }
 
-.text-neon-teal {
-  color: #00FFCC; /* Bright neon teal for description */
-  text-shadow: 0 0 10px #00FFCC, 0 0 20px #00B3A3; /* Teal glow effect */
+.text-neon-orange {
+  color: #FFA500;
+  text-shadow: 0 0 15px #FFA500, 0 0 25px #FF8C00;
 }
 
-/* Explore button styles */
 .bg-neon-purple {
-  background-color: #9400D3; /* Neon purple for button */
-  box-shadow: 0 0 15px #9400D3, 0 0 30px #8A2BE2, 0 0 45px #9400D3;
+  background-color: #DDA0DD;
+  box-shadow: 0 0 20px #DDA0DD, 0 0 40px #BA55D3, 0 0 60px #DDA0DD;
 }
 
 .bg-neon-dark-purple:hover {
-  background-color: #8A2BE2; /* Darker purple on hover */
-  box-shadow: 0 0 10px #8A2BE2, 0 0 20px #4B0082;
+  background-color: #BA55D3;
+  box-shadow: 0 0 15px #BA55D3, 0 0 30px #8A2BE2;
 }
 
 .hidden {
@@ -179,31 +174,11 @@ body {
 
 .console-underscore {
   display: inline-block;
-  position: relative;
-  top: -0.14em;
-  left: 10px;
-  animation: blink 0.7s infinite; /* Blink effect for underscore */
+  animation: blink 0.7s infinite;
 }
 
 .bg-neon-pink {
-  background-color: #FF00FF; /* Neon pink for image border */
-}
-
-.bg-neon-green {
-  background-color: #39FF14; /* Neon green */
-  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14;
-}
-
-.bg-neon-dark-green:hover {
-  background-color: #32CD32;
-}
-
-.text-black {
-  color: #000;
-}
-
-.text-white:hover {
-  color: #fff;
+  background-color: #FF1493;
 }
 
 #particles {
