@@ -70,7 +70,7 @@ export default {
             x = -1;
             letterCount += x;
             waiting = false;
-          }, 1000);
+          }, 800);
         } else if (waiting === false) {
           target.innerHTML = words[0].substring(0, letterCount);
           letterCount += x;

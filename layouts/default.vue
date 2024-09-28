@@ -1,9 +1,9 @@
 <template>
-  <div class="min-h-[80vh] sm:min-h-[85vh] md:min-h-screen flex flex-col bg-gray-900 text-gray-200 relative overflow-hidden">
+  <div class="min-h-[80vh] sm:min-h-[85vh] md:min-h-screen flex flex-col bg-gray-800 text-gray-100 relative overflow-hidden">
     <!-- Global Header -->
     <header class="bg-dark-gradient text-gray-300 p-2 shadow-lg relative z-10 w-full animate__animated animate__fadeInDown">
       <nav class="container mx-auto flex justify-between items-center animate-nav-slide-down">
-        <h1 class="text-2xl font-extrabold hover:text-neon-green transition duration-500 animate-logo-glow">
+        <h1 class="text-2xl font-extrabold hover:text-neon-blue transition duration-500 animate-logo-glow">
           My Portfolio
         </h1>
 
@@ -19,34 +19,34 @@
         <!-- Links for Desktop -->
         <ul class="hidden sm:flex space-x-4">
           <li>
-            <nuxt-link to="/" @click="closeMenu" class="hover:text-neon-green transition duration-300 animate__animated animate__fadeInLeft">Home</nuxt-link>
+            <nuxt-link to="/" @click="closeMenu" class="hover:text-neon-blue transition duration-300 animate__animated animate__fadeInLeft">Home</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/about" @click="closeMenu" class="hover:text-neon-green transition duration-300 animate__animated animate__fadeInLeft">About</nuxt-link>
+            <nuxt-link to="/about" @click="closeMenu" class="hover:text-neon-blue transition duration-300 animate__animated animate__fadeInLeft">About</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/projects" @click="closeMenu" class="hover:text-neon-green transition duration-300 animate__animated animate__fadeInLeft">Projects</nuxt-link>
+            <nuxt-link to="/projects" @click="closeMenu" class="hover:text-neon-blue transition duration-300 animate__animated animate__fadeInLeft">Projects</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/contact" @click="closeMenu" class="hover:text-neon-green transition duration-300 animate__animated animate__fadeInLeft">Contact</nuxt-link>
+            <nuxt-link to="/contact" @click="closeMenu" class="hover:text-neon-blue transition duration-300 animate__animated animate__fadeInLeft">Contact</nuxt-link>
           </li>
         </ul>
       </nav>
 
       <!-- Dropdown Menu for Mobile -->
-      <div v-if="isOpen" class="sm:hidden bg-gray-800 text-gray-300 shadow-md transform transition-all duration-300">
+      <div v-if="isOpen" class="sm:hidden bg-gray-700 text-gray-300 shadow-md transform transition-all duration-300">
         <ul class="flex flex-col space-y-2 py-2">
           <li>
-            <nuxt-link to="/" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green animate__animated animate__fadeIn">Home</nuxt-link>
+            <nuxt-link to="/" @click="closeMenu" class="block py-2 px-4 hover:text-neon-blue animate__animated animate__fadeIn">Home</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/about" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green animate__animated animate__fadeIn">About</nuxt-link>
+            <nuxt-link to="/about" @click="closeMenu" class="block py-2 px-4 hover:text-neon-blue animate__animated animate__fadeIn">About</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/projects" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green animate__animated animate__fadeIn">Projects</nuxt-link>
+            <nuxt-link to="/projects" @click="closeMenu" class="block py-2 px-4 hover:text-neon-blue animate__animated animate__fadeIn">Projects</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/contact" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green animate__animated animate__fadeIn">Contact</nuxt-link>
+            <nuxt-link to="/contact" @click="closeMenu" class="block py-2 px-4 hover:text-neon-blue animate__animated animate__fadeIn">Contact</nuxt-link>
           </li>
         </ul>
       </div>
@@ -61,9 +61,9 @@
     <footer class="bg-dark-gradient text-gray-300 p-4 text-center mt-4 relative z-10 animate__animated animate__fadeInUp transition-transform duration-300 transform hover:-translate-y-1">
       <p class="text-lg font-medium mb-2">© 2024 Siddharth Sahu. All Rights Reserved.</p>
       <div class="flex justify-center space-x-6 mt-2">
-        <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="hover:text-neon-green transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">LinkedIn</a>
-        <a href="https://github.com/siddharth-200231" class="hover:text-neon-green transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">GitHub</a>
-        <a href="https://leetcode.com/u/siddharth_123456/" class="hover:text-neon-green transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">LeetCode</a>
+        <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="hover:text-neon-blue transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">LinkedIn</a>
+        <a href="https://github.com/siddharth-200231" class="hover:text-neon-blue transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">GitHub</a>
+        <a href="https://leetcode.com/u/siddharth_123456/" class="hover:text-neon-blue transition duration-300 transform hover:scale-110 animate__animated animate__fadeIn">LeetCode</a>
       </div>
     </footer>
   </div>
@@ -91,22 +91,22 @@ export default {
 <style scoped>
 /* Dark gradient background */
 .bg-dark-gradient {
-  background: linear-gradient(135deg, #0b0b0d, #1b1b1f);
+  background: linear-gradient(135deg, #1a1a1d, #3a3a3d);
 }
 
-/* Neon green color for hover */
-.hover\:text-neon-green:hover {
-  color: #39ff14;
+/* Neon blue color for hover */
+.hover\:text-neon-blue:hover {
+  color: #00bfff; /* Light Blue */
 }
 
 /* Logo glow animation */
 @keyframes logo-glow {
   0%,
   100% {
-    text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
+    text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff, 0 0 30px #00bfff;
   }
   50% {
-    text-shadow: 0 0 20px #39ff14, 0 0 30px #39ff14, 0 0 40px #39ff14;
+    text-shadow: 0 0 20px #00bfff, 0 0 30px #00bfff, 0 0 40px #00bfff;
   }
 }
 
@@ -121,7 +121,7 @@ footer p {
 
 footer a {
   font-size: 1rem;
-  text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+  text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
 }
 
 @media (max-width: 640px) {
