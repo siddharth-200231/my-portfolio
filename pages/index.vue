@@ -19,9 +19,8 @@
       </div>
 
       <p class="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 text-neon-white">
-  A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
-</p>
-
+        A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
+      </p>
 
       <nuxt-link
         to="/projects"
@@ -95,7 +94,7 @@ export default {
       canvas.height = window.innerHeight;
 
       let particles = [];
-      const particleCount = 50;
+      const particleCount = 30; // Reduced particle count
       const colors = [
         "rgba(255, 20, 147, 0.9)",  // Brighter Hot Pink
         "rgba(0, 255, 255, 0.9)",   // Bright Cyan
@@ -128,12 +127,14 @@ export default {
           particle.x += particle.velocity.x;
           particle.y += particle.velocity.y;
 
+          // Bounce particles off the edges of the canvas
           if (particle.x > canvas.width || particle.x < 0) particle.velocity.x *= -1;
           if (particle.y > canvas.height || particle.y < 0) particle.velocity.y *= -1;
         }
         requestAnimationFrame(animateParticles);
       };
 
+      // Start animation loop
       animateParticles();
     },
   },
@@ -154,9 +155,13 @@ body {
   text-shadow: 0 0 15px #FFD700, 0 0 25px #7FFF00;
 }
 
-.text-neon-orange {
-  color: #FFA500;
-  text-shadow: 0 0 15px #FFA500, 0 0 25px #FF8C00;
+.text-neon-white {
+  color: #FFFFFF; /* White color */
+  text-shadow: 
+    0 0 15px #FFFFFF,    /* White glow */
+    0 0 25px #FFFFFF,    /* Brighter white glow */
+    0 0 30px #00BFFF,    /* Light Blue glow */
+    0 0 40px #00BFFF;     /* Brighter light blue glow */
 }
 
 .bg-neon-purple {
@@ -172,23 +177,10 @@ body {
 .hidden {
   opacity: 0;
 }
-.text-neon-white {
-  color: #FFFFFF; /* White color */
-  text-shadow: 
-    0 0 15px #FFFFFF,    /* White glow */
-    0 0 25px #FFFFFF,    /* Brighter white glow */
-    0 0 30px #00BFFF,    /* Light Blue glow */
-    0 0 40px #00BFFF;     /* Brighter light blue glow */
-}
-
 
 .console-underscore {
   display: inline-block;
   animation: blink 0.7s infinite;
-}
-
-.bg-neon-pink {
-  background-color: #FF1493;
 }
 
 #particles {
