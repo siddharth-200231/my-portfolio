@@ -1,12 +1,11 @@
 <template>
   <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
-    <canvas id="particles" class="absolute inset-0"></canvas>
-    <div class="absolute inset-0 bg-gradient-to-b from-black to-gray-900 opacity-95"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 to-black opacity-95"></div>
 
     <div class="z-10 text-center">
       <!-- Profile Image -->
       <img
-        class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-neon-pink"
+        class="rounded-full mx-auto w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 mb-6 object-cover border-4 border-neon-blue"
         src="../assets/images/newpp.jpg"
         alt="Profile Picture"
         style="object-fit: contain;"
@@ -24,7 +23,7 @@
 
       <nuxt-link
         to="/projects"
-        class="bg-neon-purple hover:bg-neon-dark-purple text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 text-black hover:text-white"
+        class="bg-neon-blue hover:bg-neon-aqua text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 text-black hover:text-white"
       >
         Explore My Work
       </nuxt-link>
@@ -36,8 +35,7 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#FFD700', '#7FFF00']); // Neon Gold and Neon Green
-    this.initParticles();
+    this.consoleText(['Hello', "I'm Siddharth Sahu"], 'text', ['#00CED1', '#00BFFF']); // Neon Aqua and Neon Light Blue
   },
   methods: {
     consoleText(words, id, colors) {
@@ -50,11 +48,11 @@ export default {
       const target = document.getElementById(id);
       target.setAttribute('style', 'color:' + colors[0]);
 
-      window.setInterval(function () {
-        if (letterCount === 0 && waiting === false) {
+      window.setInterval(() => {
+        if (letterCount === 0 && !waiting) {
           waiting = true;
           target.innerHTML = words[0].substring(0, letterCount);
-          window.setTimeout(function () {
+          window.setTimeout(() => {
             const usedColor = colors.shift();
             colors.push(usedColor);
             const usedWord = words.shift();
@@ -63,79 +61,29 @@ export default {
             target.setAttribute('style', 'color:' + colors[0]);
             letterCount += x;
             waiting = false;
-          }, 1000);
-        } else if (letterCount === words[0].length + 1 && waiting === false) {
+          }, 1100); // Increased wait time for better readability
+        } else if (letterCount === words[0].length + 1 && !waiting) {
           waiting = true;
-          window.setTimeout(function () {
+          window.setTimeout(() => {
             x = -1;
             letterCount += x;
             waiting = false;
-          }, 1500);
-        } else if (waiting === false) {
+          }, 1300); // Increased wait time
+        } else if (!waiting) {
           target.innerHTML = words[0].substring(0, letterCount);
           letterCount += x;
         }
-      }, 120);
+      }, 150); // Slower typing effect
 
-      window.setInterval(function () {
-        if (visible === true) {
+      window.setInterval(() => {
+        if (visible) {
           con.className = 'console-underscore hidden';
           visible = false;
         } else {
           con.className = 'console-underscore';
           visible = true;
         }
-      }, 400);
-    },
-    initParticles() {
-      const canvas = document.getElementById("particles");
-      const ctx = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      let particles = [];
-      const particleCount = 30; // Reduced particle count
-      const colors = [
-        "rgba(255, 20, 147, 0.9)",  // Brighter Hot Pink
-        "rgba(0, 255, 255, 0.9)",   // Bright Cyan
-        "rgba(255, 165, 0, 0.9)",   // Bright Orange
-        "rgba(50, 205, 50, 0.9)",   // Lime Green
-        "rgba(138, 43, 226, 0.9)",  // Brighter Purple
-      ];
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 4 + 2,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          velocity: {
-            x: (Math.random() - 0.5) * 1.5,
-            y: (Math.random() - 0.5) * 1.5,
-          },
-        });
-      }
-
-      const animateParticles = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let particle of particles) {
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-          ctx.fillStyle = particle.color;
-          ctx.fill();
-
-          particle.x += particle.velocity.x;
-          particle.y += particle.velocity.y;
-
-          // Bounce particles off the edges of the canvas
-          if (particle.x > canvas.width || particle.x < 0) particle.velocity.x *= -1;
-          if (particle.y > canvas.height || particle.y < 0) particle.velocity.y *= -1;
-        }
-        requestAnimationFrame(animateParticles);
-      };
-
-      // Start animation loop
-      animateParticles();
+      }, 500); // Slower blink for better visibility
     },
   },
 };
@@ -152,7 +100,7 @@ body {
   text-align: center;
   max-width: 600px;
   margin: auto;
-  text-shadow: 0 0 15px #FFD700, 0 0 25px #7FFF00;
+  text-shadow: 0 0 15px #00CED1, 0 0 30px #00BFFF; /* Neon Aqua and Neon Light Blue glow */
 }
 
 .text-neon-white {
@@ -164,14 +112,18 @@ body {
     0 0 40px #00BFFF;     /* Brighter light blue glow */
 }
 
-.bg-neon-purple {
-  background-color: #DDA0DD;
-  box-shadow: 0 0 20px #DDA0DD, 0 0 40px #BA55D3, 0 0 60px #DDA0DD;
+.bg-neon-blue {
+  background-color: #1E90FF; /* Neon Blue */
+  box-shadow: 0 0 20px #1E90FF, 0 0 40px #00CED1; /* Neon Aqua glow */
 }
 
-.bg-neon-dark-purple:hover {
-  background-color: #BA55D3;
-  box-shadow: 0 0 15px #BA55D3, 0 0 30px #8A2BE2;
+.bg-neon-aqua {
+  background-color: #00CED1; /* Neon Aqua */
+}
+
+.bg-neon-dark-blue:hover {
+  background-color: #00BFFF; /* Hover to Neon Light Blue */
+  box-shadow: 0 0 15px #00CED1, 0 0 30px #1E90FF; /* Neon Aqua glow on hover */
 }
 
 .hidden {
@@ -181,13 +133,6 @@ body {
 .console-underscore {
   display: inline-block;
   animation: blink 0.7s infinite;
-}
-
-#particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
 }
 
 @keyframes blink {
