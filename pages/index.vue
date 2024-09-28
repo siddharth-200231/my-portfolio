@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+   <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 opacity-95"></div>
 
     <div class="z-10 text-center">
@@ -22,10 +22,12 @@
       </p>
 
       <nuxt-link
-        to="/projects"
-        class="bg-neon-green hover:bg-neon-dark-green text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105">
-        Explore My Work
-      </nuxt-link>
+  to="/projects"
+  class="bg-neon-green hover:bg-neon-dark-green text-sm sm:text-base py-1.5 px-3 sm:py-2 sm:px-4 rounded-full shadow-lg transition-all duration-500 transform hover:scale-105 text-black hover:text-white"
+>
+  Explore My Work
+</nuxt-link>
+
     </div>
   </div>
 </template>
@@ -139,7 +141,37 @@ export default {
 
 <style scoped>
 body {
-  background: #111; /* Dark background for better contrast */
+  background: #111; /* Dark background to blend with the theme */
+}
+
+/* Background gradient for index page */
+.bg-dark-gradient {
+  background: radial-gradient(circle, rgba(34, 34, 34, 1) 0%, rgba(12, 12, 12, 1) 50%, rgba(0, 0, 0, 1) 100%);
+}
+
+.console-container {
+  font-family: 'Khula', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  text-shadow: 0 0 10px #00FFFF, 0 0 20px #39FF14; /* Neon glow effect */
+}
+
+.text-neon-blue {
+  color: #1E90FF; /* Bright neon blue for description */
+  text-shadow: 0 0 10px #1E90FF, 0 0 20px #00BFFF;
+}
+
+/* Explore button styles */
+.bg-neon-gradient {
+  background: linear-gradient(135deg, #39FF14, #00FF00);
+  box-shadow: 0 0 15px #39FF14, 0 0 30px #00FF00, 0 0 45px #39FF14;
+}
+
+.bg-neon-dark-green:hover {
+  background: linear-gradient(135deg, #228B22, #006400);
+  box-shadow: 0 0 10px #228B22, 0 0 20px #006400;
 }
 
 .hidden {
@@ -178,6 +210,24 @@ body {
 .bg-neon-dark-green {
   background-color: #32CD32; /* Darker neon green on hover */
 }
+.bg-neon-green {
+  background-color: #39FF14; /* Neon green */
+  box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 30px #39FF14; /* Neon glow effect */
+}
+
+.bg-neon-dark-green {
+  background-color: #32CD32; /* Darker neon green */
+  box-shadow: 0 0 15px #32CD32, 0 0 25px #32CD32, 0 0 35px #32CD32; /* More intense glow on hover */
+}
+
+.text-black {
+  color: #000; /* Black text for better contrast on bright green button */
+}
+
+.text-white:hover {
+  color: #fff; /* White text on hover */
+}
+
 
 #particles {
   position: absolute;
