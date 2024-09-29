@@ -5,11 +5,10 @@
     <div class="z-10 text-center px-4">
       <!-- Profile Image -->
       <img
-  class="rounded-full mx-auto w-40 h-40 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-cover border-4 border-neon-green shadow-neon-glow"
-  src="../assets/images/hacker.jpg"
-  alt="Profile Picture"
-/>
-
+        class="rounded-full mx-auto w-40 h-40 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-cover border-4 border-neon-green shadow-neon-glow"
+        src="../assets/images/hacker.jpg"
+        alt="Profile Picture"
+      />
 
       <!-- Console Animation -->
       <div class="console-container mt-4 sm:mt-6 md:mt-8 lg:mt-10">
@@ -37,7 +36,7 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.consoleText(["Hello", "I'm Siddharth Sahu"], 'text', ['#00FF00']);
+    this.consoleText(["Hello", "I'm Siddharth Sahu", "And a React and Next.js developer" ,"Feel free to explore my projects and contact me "], 'text', ['#00FF00']);
   },
   methods: {
     consoleText(words, id, colors) {
@@ -92,9 +91,7 @@ export default {
 };
 </script>
 
-
 <style scoped>
-/* Gradient background */
 /* Gradient background */
 .bg-gradient-to-b {
   background: linear-gradient(to bottom, #1a1a1a, #000000, #1a1a1a);
@@ -182,5 +179,4 @@ a:hover {
     font-size: 2.5em;
   }
 }
-
 </style>
