@@ -167,19 +167,19 @@ a:hover {
 
 @media (min-width: 640px) {
   .console-container {
-    font-size: 1.75em;
+    font-size: 2em;
   }
 }
 
 @media (min-width: 768px) {
   .console-container {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 }
 
 @media (min-width: 1024px) {
   .console-container {
-    font-size: 2.25em;
+    font-size: 2.5em;
   }
 }
 
