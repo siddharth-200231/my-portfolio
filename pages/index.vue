@@ -5,8 +5,8 @@
     <div class="z-10 text-center px-4">
       <!-- Profile Image -->
       <img
-        class="rounded-full mx-auto w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-cover border-4 border-neon-green shadow-neon-glow"
-        src="../assets/images/newpp.jpg"
+        class="rounded-full mx-auto w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-contain border-4 border-neon-green shadow-neon-glow"
+        src="../assets/images/ppp.jpg"
         alt="Profile Picture"
       />
 
