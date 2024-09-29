@@ -54,6 +54,9 @@
       </transition>
     </header>
 
+    <!-- New background before main -->
+    <div class="absolute inset-0 bg-gradient-to-r-for-main from-dark-green to-black opacity-70 z-0"></div>
+
     <!-- Main Content -->
     <main class="flex-grow container mx-auto p-4 relative z-10 w-full animate__animated animate__fadeIn animate__delay-0.2s">
       <NuxtPage />
@@ -95,6 +98,13 @@ export default {
 .bg-gradient-to-r {
   background: linear-gradient(to right, #000, #1f1f1f, #141414); /* Consistent dark theme */
 }
+/* Dark greenish gradient background */
+.bg-gradient-to-r-for-main {
+  background: linear-gradient(to right, #003300, #001a00); /* Dark greenish tint */
+}
+
+/* Dark greenish gradient background */
+
 
 /* Neon green color */
 .text-neon-green {

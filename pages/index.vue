@@ -49,6 +49,7 @@ export default {
       const target = document.getElementById(id);
       target.setAttribute('style', 'color:' + colors[0]);
 
+      // Adjusted interval and delay times for faster transition between words
       window.setInterval(() => {
         if (letterCount === 0 && !waiting) {
           waiting = true;
@@ -62,19 +63,19 @@ export default {
             target.setAttribute('style', 'color:' + colors[0]);
             letterCount += x;
             waiting = false;
-          }, 1000);
+          }, 500); // Reduced delay for transition between words
         } else if (letterCount === words[0].length + 1 && !waiting) {
           waiting = true;
           window.setTimeout(() => {
             x = -1;
             letterCount += x;
             waiting = false;
-          }, 1300);
+          }, 800); // Reduced waiting time before text deletes
         } else if (!waiting) {
           target.innerHTML = words[0].substring(0, letterCount);
           letterCount += x;
         }
-      }, 150);
+      }, 100); // Smoother and faster typing speed
 
       window.setInterval(() => {
         if (visible) {
@@ -84,13 +85,15 @@ export default {
           con.className = 'console-underscore';
           visible = true;
         }
-      }, 500);
+      }, 400); // Smoother blinking animation
     },
   },
 };
 </script>
 
+
 <style scoped>
+/* Gradient background */
 /* Gradient background */
 .bg-gradient-to-b {
   background: linear-gradient(to bottom, #1a1a1a, #000000, #1a1a1a);
@@ -109,7 +112,7 @@ export default {
 /* Console container styling */
 .console-container {
   font-family: 'Courier New', monospace;
-  font-size: 1.5em;
+  font-size: 1.6em;
   text-align: center;
   max-width: 600px;
   margin: auto;
@@ -124,23 +127,23 @@ export default {
   font-weight: bold;
 }
 
-.hidden {
-  opacity: 0;
-}
-
+/* Console underscore animation */
 .console-underscore {
   display: inline-block;
-  animation: blink 0.7s infinite;
+  animation: blink 0.5s infinite; /* Faster blinking animation */
 }
 
 @keyframes blink {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
     opacity: 0;
   }
+}
+
+.hidden {
+  opacity: 0;
 }
 
 /* Button shadow and glow */
@@ -156,7 +159,7 @@ a:hover {
 /* Responsiveness improvements */
 @media (max-width: 640px) {
   .console-container {
-    font-size: 1.25em;
+    font-size: 1.8em; /* Slightly bigger font for smaller screens */
     white-space: pre-wrap;
   }
 }
