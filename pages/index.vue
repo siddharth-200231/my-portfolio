@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-[70vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+  <div class="relative min-h-[67vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-gray-800 via-black to-gray-900 opacity-90"></div>
 
     <div class="z-10 text-center px-4">
