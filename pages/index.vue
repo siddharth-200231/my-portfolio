@@ -1,14 +1,15 @@
 <template>
-  <div class="relative min-h-[67vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+  <div class="relative min-h-[66vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-gray-800 via-black to-gray-900 opacity-90"></div>
 
     <div class="z-10 text-center px-4">
       <!-- Profile Image -->
       <img
-        class="rounded-full mx-auto w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-contain border-4 border-neon-green shadow-neon-glow"
-        src="../assets/images/ppp.jpg"
-        alt="Profile Picture"
-      />
+  class="rounded-full mx-auto w-40 h-40 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-52 lg:h-52 xl:w-60 xl:h-60 mb-6 object-cover border-4 border-neon-green shadow-neon-glow"
+  src="../assets/images/hacker.jpg"
+  alt="Profile Picture"
+/>
+
 
       <!-- Console Animation -->
       <div class="console-container mt-4 sm:mt-6 md:mt-8 lg:mt-10">
@@ -159,7 +160,7 @@ a:hover {
 /* Responsiveness improvements */
 @media (max-width: 640px) {
   .console-container {
-    font-size: 1.8em; /* Slightly bigger font for smaller screens */
+    font-size: 1.7em; /* Slightly bigger font for smaller screens */
     white-space: pre-wrap;
   }
 }

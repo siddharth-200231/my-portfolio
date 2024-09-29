@@ -66,9 +66,9 @@
     <footer class="bg-gradient-to-r from-gray-800 to-black text-gray-200 p-4 text-center mt-4 relative z-10 animate__animated animate__fadeInUp transition-transform duration-300 transform hover:-translate-y-1">
       <p class="text-lg font-medium mb-2">© 2024 Siddharth Sahu. All Rights Reserved.</p>
       <div class="flex justify-center space-x-6 mt-2">
-        <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="hover:text-neon-green transition duration-300 transform hover:scale-110">LinkedIn</a>
-        <a href="https://github.com/siddharth-200231" class="hover:text-neon-green transition duration-300 transform hover:scale-110">GitHub</a>
-        <a href="https://leetcode.com/u/siddharth_123456/" class="hover:text-neon-green transition duration-300 transform hover:scale-110">LeetCode</a>
+        <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="hover:text-blue-500 transition duration-300 transform hover:scale-110">LinkedIn</a>
+        <a href="https://github.com/siddharth-200231" class="hover:text-gray-400 transition duration-300 transform hover:scale-110">GitHub</a>
+        <a href="https://leetcode.com/u/siddharth_123456/" class="hover:text-orange-400 transition duration-300 transform hover:scale-110">LeetCode</a>
       </div>
     </footer>
   </div>
@@ -98,13 +98,11 @@ export default {
 .bg-gradient-to-r {
   background: linear-gradient(to right, #000, #1f1f1f, #141414); /* Consistent dark theme */
 }
+
 /* Dark greenish gradient background */
 .bg-gradient-to-r-for-main {
-  background: linear-gradient(to right, #003300, #001a00); /* Dark greenish tint */
+  background: linear-gradient(to right, #022002, #072107); /* Dark greenish tint */
 }
-
-/* Dark greenish gradient background */
-
 
 /* Neon green color */
 .text-neon-green {
@@ -155,7 +153,7 @@ footer p {
 
 footer a {
   font-size: 1rem;
-  color: #00ff00; /* Neon green text */
+  color: #00ff00; /* Default neon green text */
   text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 
