@@ -22,7 +22,7 @@
 
       <!-- Download CV Button -->
       <a
-        href="../static/cv/siddcv.pdf"
+        href="/cv/siddcv.pdf"
         download
         class="mt-4 bg-gradient-to-r from-indigo-500 via-purple-600 to-blue-500 hover:from-purple-700 hover:via-indigo-600 hover:to-blue-700 text-xs sm:text-sm md:text-base lg:text-lg py-2 px-4 sm:px-6 rounded-full shadow-button-glow transition-all duration-300 transform hover:scale-105 text-white font-semibold"
       >
@@ -36,7 +36,7 @@
 export default {
   name: "HomePage",
   mounted() {
-    this.consoleText(["Hello", "I'm Siddharth Sahu", "And a React and Next.js developer" ,"Feel free to explore my projects and contact me "], 'text', ['#00FF00']);
+    this.consoleText(["Hello", "I'm Siddharth Sahu", "A React and Next.js developer" ,"Feel free to explore my projects and contact me "], 'text', ['#00FF00']);
   },
   methods: {
     consoleText(words, id, colors) {
@@ -176,7 +176,7 @@ a:hover {
 
 @media (min-width: 1024px) {
   .console-container {
-    font-size: 2.5em;
+    font-size: 2.4em;
   }
 }
 </style>
