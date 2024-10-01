@@ -19,7 +19,7 @@
         <!-- Links for Desktop -->
         <ul class="hidden sm:flex space-x-4">
           <li v-for="link in links" :key="link.name">
-            <nuxt-link :to="link.path" @click="closeMenu" class="hover:text-neon-green transition-all duration-300 hover:scale-105">
+            <nuxt-link :to="link.path" @click="closeMenu" class="hover:text-neon-green transition-all duration-300 hover:scale-105 text-base tracking-wide">
               {{ link.name }}
             </nuxt-link>
           </li>
@@ -41,7 +41,7 @@
     </header>
 
     <!-- Background before main -->
-    <div class="absolute inset-0 bg-gradient-to-r-for-main from-dark-green to-black opacity-80 z-0"></div>
+    <div class="absolute inset-0 bg-dynamic-gradient opacity-90 z-0"></div>
 
     <!-- Main Content -->
     <main class="flex-grow container mx-auto p-4 relative z-10 w-full animate__animated animate__fadeIn animate__delay-0.2s">
@@ -96,9 +96,9 @@ export default {
   background: linear-gradient(to right, #000, #1f1f1f, #141414); /* Consistent dark theme */
 }
 
-/* Dark greenish gradient background */
-.bg-gradient-to-r-for-main {
-  background: linear-gradient(to right, #022002, #072107); /* Dark greenish tint */
+/* Dynamic gradient for background */
+.bg-dynamic-gradient {
+  background: radial-gradient(circle at center, rgba(0, 255, 0, 0.5), rgba(0, 0, 0, 0.9));
 }
 
 /* Neon green hover */
