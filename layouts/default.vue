@@ -1,34 +1,27 @@
 <template>
   <div class="min-h-[80vh] sm:min-h-[85vh] md:min-h-screen flex flex-col bg-gray-900 text-gray-200 relative overflow-hidden">
     <!-- Global Header -->
-    <header class="bg-gradient-to-r from-gray-800 to-black text-gray-200 p-4 sm:p-3 shadow-lg relative z-10 w-full animate__animated animate__fadeInDown">
+    <header class="bg-gradient-to-r from-gray-800 to-black text-gray-200 p-3 sm:p-4 shadow-lg relative z-10 w-full animate__animated animate__fadeInDown">
       <nav class="container mx-auto flex justify-between items-center animate-nav-slide-down">
-        <h1 class="text-3xl sm:text-2xl font-bold tracking-wider hover:text-neon-green transition duration-300 animate-logo-glow">
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-wider hover:text-neon-green transition duration-300 animate-logo-glow">
           My Portfolio
         </h1>
 
         <!-- Hamburger Icon for Mobile -->
         <div class="sm:hidden">
           <button @click="toggleMenu" class="text-gray-200 focus:outline-none transition-transform transform hover:scale-110">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </button>
         </div>
 
         <!-- Links for Desktop -->
-        <ul class="hidden sm:flex space-x-6">
-          <li>
-            <nuxt-link to="/" @click="closeMenu" class="hover:text-neon-green transition-all duration-500 hover:scale-105">Home</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/about" @click="closeMenu" class="hover:text-neon-green transition-all duration-500 hover:scale-105">About</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/projects" @click="closeMenu" class="hover:text-neon-green transition-all duration-500 hover:scale-105">Projects</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/contact" @click="closeMenu" class="hover:text-neon-green transition-all duration-500 hover:scale-105">Contact</nuxt-link>
+        <ul class="hidden sm:flex space-x-4">
+          <li v-for="link in links" :key="link.name">
+            <nuxt-link :to="link.path" @click="closeMenu" class="hover:text-neon-green transition-all duration-300 hover:scale-105">
+              {{ link.name }}
+            </nuxt-link>
           </li>
         </ul>
       </nav>
@@ -37,24 +30,17 @@
       <transition name="dropdown">
         <div v-if="isOpen" class="sm:hidden bg-gray-800 text-gray-200 shadow-md transition-all duration-500 ease-in-out transform">
           <ul class="flex flex-col space-y-2 py-2">
-            <li>
-              <nuxt-link to="/" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green">Home</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/about" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green">About</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/projects" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green">Projects</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/contact" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green">Contact</nuxt-link>
+            <li v-for="link in links" :key="link.name">
+              <nuxt-link :to="link.path" @click="closeMenu" class="block py-2 px-4 hover:text-neon-green">
+                {{ link.name }}
+              </nuxt-link>
             </li>
           </ul>
         </div>
       </transition>
     </header>
 
-    <!-- New background before main -->
+    <!-- Background before main -->
     <div class="absolute inset-0 bg-gradient-to-r-for-main from-dark-green to-black opacity-80 z-0"></div>
 
     <!-- Main Content -->
@@ -64,11 +50,11 @@
 
     <!-- Global Footer -->
     <footer class="bg-gradient-to-r from-gray-800 to-black text-gray-200 p-4 sm:p-3 text-center mt-4 relative z-10 animate__animated animate__fadeInUp transition-transform duration-300 transform hover:-translate-y-1">
-      <p class="text-sm sm:text-base font-medium mb-2">© 2024 Siddharth Sahu. All Rights Reserved.</p>
-      <div class="flex justify-center space-x-6 mt-2">
-        <a href="https://www.linkedin.com/in/siddharth-sahu-40aa57289/" class="hover:text-neon-green transition-all duration-500 transform hover:scale-110">LinkedIn</a>
-        <a href="https://github.com/siddharth-200231" class="hover:text-gray-400 transition-all duration-500 transform hover:scale-110">GitHub</a>
-        <a href="https://leetcode.com/u/siddharth_123456/" class="hover:text-orange-400 transition-all duration-500 transform hover:scale-110">LeetCode</a>
+      <p class="text-xs sm:text-sm font-medium mb-2">© 2024 Siddharth Sahu. All Rights Reserved.</p>
+      <div class="flex justify-center space-x-4 sm:space-x-6 mt-2">
+        <a v-for="social in socials" :key="social.name" :href="social.link" class="hover:text-neon-green transition-all duration-300 transform hover:scale-110">
+          {{ social.name }}
+        </a>
       </div>
     </footer>
   </div>
@@ -80,6 +66,17 @@ export default {
   data() {
     return {
       isOpen: false,
+      links: [
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/about' },
+        { name: 'Projects', path: '/projects' },
+        { name: 'Contact', path: '/contact' }
+      ],
+      socials: [
+        { name: 'LinkedIn', link: 'https://www.linkedin.com/in/siddharth-sahu-40aa57289/' },
+        { name: 'GitHub', link: 'https://github.com/siddharth-200231' },
+        { name: 'LeetCode', link: 'https://leetcode.com/u/siddharth_123456/' }
+      ]
     };
   },
   methods: {
@@ -149,12 +146,12 @@ export default {
 
 /* Footer styles */
 footer p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #00ff00;
 }
 
 footer a {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #00ff00;
   text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
@@ -170,7 +167,7 @@ footer a:hover {
   }
 
   header h1 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
   footer {
@@ -178,11 +175,11 @@ footer a:hover {
   }
 
   footer p {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 
   footer a {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
 }
 </style>
