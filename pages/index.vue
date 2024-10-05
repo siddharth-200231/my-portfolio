@@ -1,14 +1,15 @@
 <template>
-  <div class="relative min-h-[66vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
-    <!-- Background Gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-800 opacity-95"></div>
+  <div class="relative min-h-[68vh] flex flex-col items-center justify-center text-gray-100 overflow-hidden">
+    <!-- Background Animation -->
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-black to-gray-800 opacity-95 animate-bg"></div>
 
     <div class="z-10 text-center px-4 animate-fade-in">
       <!-- Profile Image with Hover Glow Effect -->
       <img
-        class="rounded-full mx-auto w-32 sm:w-40 md:w-44 lg:w-52 xl:w-60 mb-6 object-cover border-4 border-neon-green shadow-elegant-glow hover:shadow-elegant-hover transition duration-300"
+        class="rounded-full mx-auto w-32 sm:w-40 md:w-44 lg:w-52 xl:w-60 mb-6 object-cover border-4 border-neon-green shadow-elegant-glow hover:shadow-elegant-hover transition duration-300 transform hover:scale-110"
         src="../assets/images/WhatsApp Image 2024-09-24 at 15.20.37.jpeg"
-        alt="Profile Picture"
+        alt="Profile Picture of Siddharth Sahu"
+        loading="lazy"
       />
 
       <!-- Console Animation -->
@@ -18,15 +19,17 @@
       </div>
 
       <!-- Introduction Text -->
-      <p class="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed max-w-3xl mx-auto mb-6 text-intro">
+      <p class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl leading-relaxed max-w-3xl mx-auto mb-6 text-intro shadow-text">
         A Full-Stack Developer specializing in the MERN stack and creating scalable web applications.
       </p>
 
       <!-- Download CV Button with Enhanced Glow and Animation -->
       <a
-        href="/cv/siddcv.pdf"
+        href="/siddCv.pdf"
         download
-        class="mt-4 bg-gradient-to-r from-indigo-500 via-purple-600 to-blue-500 hover:from-purple-700 hover:via-indigo-600 hover:to-blue-700 text-xs sm:text-sm md:text-base lg:text-lg py-2 px-6 rounded-full shadow-elegant-button hover:shadow-elegant-hover transform transition-transform duration-300 hover:scale-110 hover:rotate-1 font-semibold"
+        class="mt-4 bg-gradient-to-r from-indigo-500 via-purple-600 to-blue-500 hover:from-purple-700 hover:via-indigo-600 hover:to-blue-700 text-xs sm:text-sm md:text-base lg:text-lg py-2 px-6 rounded-full shadow-elegant-button hover:shadow-elegant-hover transform transition-transform duration-300 hover:scale-110 hover:rotate-1 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neon-green"
+        aria-label="Download Siddharth Sahu's CV"
+        role="button"
       >
         Download CV
       </a>
@@ -102,9 +105,21 @@ export default {
 </script>
 
 <style scoped>
-/* Background Gradient */
-.bg-gradient-to-b {
-  background: linear-gradient(to bottom, #000000, #1a1a1a, #2b2b2b);
+/* Background Gradient Animation */
+@keyframes bgAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.animate-bg {
+  animation: bgAnimation 10s ease infinite;
+  background-size: 400% 400%;
 }
 
 /* Neon green color for text and image borders */
@@ -138,7 +153,7 @@ export default {
 /* Console container styling */
 .console-container {
   font-family: 'Fira Code', monospace;
-  font-size: 1.4em;
+  font-size: 1.4em; /* Default font size for console text */
   text-align: center;
   max-width: 600px;
   margin: auto;
@@ -202,7 +217,26 @@ export default {
 
 @media (min-width: 1025px) {
   .console-container {
-    font-size: 2em; /* Full size for larger screens */
+    font-size: 1.6em; /* Slightly smaller for larger screens */
+  }
+}
+
+/* Responsive introduction text sizing */
+@media (max-width: 640px) {
+  .text-intro {
+    font-size: 1em; /* Smaller text for mobile */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .text-intro {
+    font-size: 1.2em; /* Slightly larger for mid-sized screens */
+  }
+}
+
+@media (min-width: 769px) {
+  .text-intro {
+    font-size: 1.4em; /* Slightly smaller for larger screens */
   }
 }
 

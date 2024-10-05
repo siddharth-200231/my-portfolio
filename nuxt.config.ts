@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true }, // Enables Nuxt.js development tools in the browser.
-  
+  // Enables Nuxt.js development tools in the browser.
+  devtools: { enabled: true },
+  modules: [
+    '@nuxt/image',
+    // other modules...
+  ],
+
   css: [
     '~/assets/css/main.css', // Custom main CSS file.
     'animate.css/animate.min.css', // Animate.css for animations.
@@ -14,5 +19,8 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: '2024-09-24', // Compatibility date for your project.
+  // Compatibility date for your project.
+  compatibilityDate: '2024-09-24',
+
+  modules: ['@nuxt/image']
 });
