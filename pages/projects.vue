@@ -8,6 +8,8 @@
     <div class="container mx-auto p-6 z-10">
       <h1 class="text-4xl font-bold mb-6 text-center animate__animated animate__fadeIn">Projects</h1>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Project Card 1 -->
         <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.2s">
           <div class="bg-animation"></div>
           <img src="../assets/images/ecomm.png" alt="E-Commerce Platform" class="project-image" />
@@ -19,7 +21,35 @@
             <a href="https://siddstore.vercel.app" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
           </div>
         </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.4s">
+          <div class="bg-animation"></div>
+          <img src="../assets/images/loginn.jpeg" alt="User Authentication System" class="project-image" />
+          <div class="p-4">
+            <h3 class="text-2xl font-bold mb-2 text-blue-500">User Authentication System</h3>
+            <p class="text-gray-300 mb-4">
+              Built a user authentication system with Express.js, incorporating JWT for session management and Bcrypt for password encryption.
+            </p>
+            <a href="https://your-auth-system-link.com" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.6s">
+          <div class="bg-animation"></div>
+          <img src="../assets/images/project3.png" alt="Project 3 Title" class="project-image" />
+          <div class="p-4">
+            <h3 class="text-2xl font-bold mb-2 text-blue-500">Project 3 Title</h3>
+            <p class="text-gray-300 mb-4">
+              Brief description of Project 3, highlighting key features and technologies used.
+            </p>
+            <a href="https://your-project3-link.com" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
+          </div>
+        </div>
+
         <!-- Add more project cards similarly -->
+        
       </div>
     </div>
   </div>
