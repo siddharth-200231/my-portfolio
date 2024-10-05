@@ -37,71 +37,69 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "HomePage",
-  mounted() {
-    this.consoleText(
-      [
-        "Hello",
-        "I'm Siddharth Sahu",
-        "A React and Next.js developer",
-        "Feel free to explore my projects and contact me",
-      ],
-      "text",
-      ["#00FF00"]
-    );
-  },
-  methods: {
-    consoleText(words, id, colors) {
-      if (colors === undefined) colors = ["#fff"];
-      let visible = true;
-      const con = document.getElementById("console");
-      let letterCount = 1;
-      let x = 1;
-      let waiting = false;
-      const target = document.getElementById(id);
-      target.setAttribute("style", "color:" + colors[0]);
+<script setup>
+import { onMounted } from 'vue';
 
-      window.setInterval(() => {
-        if (letterCount === 0 && !waiting) {
-          waiting = true;
-          target.innerHTML = words[0].substring(0, letterCount);
-          window.setTimeout(() => {
-            const usedColor = colors.shift();
-            colors.push(usedColor);
-            const usedWord = words.shift();
-            words.push(usedWord);
-            x = 1;
-            target.setAttribute("style", "color:" + colors[0]);
-            letterCount += x;
-            waiting = false;
-          }, 500);
-        } else if (letterCount === words[0].length + 1 && !waiting) {
-          waiting = true;
-          window.setTimeout(() => {
-            x = -1;
-            letterCount += x;
-            waiting = false;
-          }, 800);
-        } else if (!waiting) {
-          target.innerHTML = words[0].substring(0, letterCount);
-          letterCount += x;
-        }
-      }, 100);
+const consoleText = (words, id, colors) => {
+  if (colors === undefined) colors = ["#fff"];
+  let visible = true;
+  const con = document.getElementById("console");
+  let letterCount = 1;
+  let x = 1;
+  let waiting = false;
+  const target = document.getElementById(id);
+  target.setAttribute("style", "color:" + colors[0]);
 
-      window.setInterval(() => {
-        if (visible) {
-          con.className = "console-underscore hidden";
-          visible = false;
-        } else {
-          con.className = "console-underscore";
-          visible = true;
-        }
-      }, 400);
-    },
-  },
+  window.setInterval(() => {
+    if (letterCount === 0 && !waiting) {
+      waiting = true;
+      target.innerHTML = words[0].substring(0, letterCount);
+      window.setTimeout(() => {
+        const usedColor = colors.shift();
+        colors.push(usedColor);
+        const usedWord = words.shift();
+        words.push(usedWord);
+        x = 1;
+        target.setAttribute("style", "color:" + colors[0]);
+        letterCount += x;
+        waiting = false;
+      }, 500);
+    } else if (letterCount === words[0].length + 1 && !waiting) {
+      waiting = true;
+      window.setTimeout(() => {
+        x = -1;
+        letterCount += x;
+        waiting = false;
+      }, 800);
+    } else if (!waiting) {
+      target.innerHTML = words[0].substring(0, letterCount);
+      letterCount += x;
+    }
+  }, 100);
+
+  window.setInterval(() => {
+    if (visible) {
+      con.className = "console-underscore hidden";
+      visible = false;
+    } else {
+      con.className = "console-underscore";
+      visible = true;
+    }
+  }, 400);
 };
+
+onMounted(() => {
+  consoleText(
+    [
+      "Hello",
+      "I'm Siddharth Sahu",
+      "A React and Next.js developer",
+      "Feel free to explore my projects and contact me",
+    ],
+    "text",
+    ["#00FF00"]
+  );
+});
 </script>
 
 <style scoped>
