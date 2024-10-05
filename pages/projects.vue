@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
 .project-image {
   width: 100%;
   height: 40%;
-  object-contain;
+  object-fit: contain;
   transition: transform 0.3s ease;
   z-index: 2; /* Ensures the image is above the background animation */
 }
