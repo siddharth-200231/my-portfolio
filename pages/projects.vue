@@ -36,17 +36,18 @@
         </div>
 
         <!-- Project Card 3 -->
-        <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.6s">
-          <div class="bg-animation"></div>
-          <img src="../assets/images/project3.png" alt="Project 3 Title" class="project-image" />
-          <div class="p-4">
-            <h3 class="text-2xl font-bold mb-2 text-blue-500">Project 3 Title</h3>
-            <p class="text-gray-300 mb-4">
-              Brief description of Project 3, highlighting key features and technologies used.
-            </p>
-            <a href="https://your-project3-link.com" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
-          </div>
-        </div>
+       
+        <!-- Project Card 3 -->
+<div class="project-card animate__animated animate__fadeInRight animate__delay-0.6s">
+  <div class="bg-animation"></div>
+  <img src="../assets/images/download.jpeg" alt="Heart Disease Detection Model" class="w-full h-40 object-contain rounded-t-lg transition-transform duration-300 transform hover:scale-105" />
+  <div class="p-4">
+    <h3 class="text-2xl font-bold mb-2 text-blue-500">Heart Disease Detection Model</h3>
+    <p class="text-gray-300 mb-4">
+      Developed a heart disease prediction model using Random Forest, achieving 82% accuracy. Utilized Python, Scikit-learn, Pandas, and Numpy for data preprocessing and feature engineering.
+    </p>
+  </div>
+</div>
 
         <!-- Add more project cards similarly -->
         
