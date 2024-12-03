@@ -25,7 +25,7 @@
 
       <!-- Download CV Button with Enhanced Glow and Animation -->
       <a
-        href="/siddCv.pdf"
+        href="/siddharthCv.pdf"
         download="siddharthCv"
         class="mt-4 bg-gradient-to-r from-indigo-500 via-purple-600 to-blue-500 hover:from-purple-700 hover:via-indigo-600 hover:to-blue-700 text-xs sm:text-sm md:text-base lg:text-lg py-2 px-6 rounded-full shadow-elegant-button hover:shadow-elegant-hover transform transition-transform duration-300 hover:scale-110 hover:rotate-1 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neon-green"
         aria-label="Download Siddharth Sahu's CV"
