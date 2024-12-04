@@ -158,11 +158,13 @@ export default {
 
 /* Container Styling */
 .v-container {
-  background: transparent;
+  background: rgba(15, 15, 15, 0.7);
+  border: 1px solid rgba(0, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 
   &:hover {
+    border-color: rgba(0, 255, 255, 0.2);
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(0, 255, 255, 0.1);
@@ -247,11 +249,10 @@ export default {
 @media (max-width: 600px) {
   /* Reset all container paddings */
   :deep(.v-container) {
-    padding: 0 8px !important;
+    padding: 16px !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: calc(100vh - 112px) !important;
   }
 
   /* App bar specific styles */
@@ -266,7 +267,7 @@ export default {
     padding-top: 56px !important;
     
     .v-container {
-      padding: 0 8px !important;
+      padding: 16px !important;
     }
   }
 
@@ -306,22 +307,6 @@ export default {
   .nav-link {
     padding: 0 8px !important;
     font-size: 0.9rem;
-  }
-}
-
-/* Extra small height screens */
-@media (max-height: 600px) {
-  :deep(.v-main) {
-    .v-container {
-      height: calc(100vh - 96px) !important;
-    }
-  }
-
-  :deep(.v-app-bar) {
-    height: 48px !important;
-    .v-toolbar__content {
-      min-height: 48px !important;
-    }
   }
 }
 </style>
