@@ -332,14 +332,22 @@ onMounted(() => {
 /* Mobile optimizations */
 @media (max-width: 600px) {
   .glass-card {
-    padding: 0.7rem;
-    margin: auto;
+    padding: 1.2rem;
+    margin: 0.6rem auto;
     width: 95%;
+    min-height: 85vh;
+  }
+
+  .content-wrapper {
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
   }
 
   .console-content {
-    padding: 0.5rem;
-    height: 50px;
+    padding: 0.55rem;
+    height: 55px;
   }
 
   .download-btn {
@@ -350,26 +358,9 @@ onMounted(() => {
 
 /* Small height screens */
 @media (max-height: 700px) {
-  .main-content {
-    height: calc(100vh - 100px);
-  }
-
   .glass-card {
-    padding: 0.75rem;
-    max-height: calc(100vh - 120px);
-  }
-
-  .avatar-container {
-    margin-bottom: 0.5rem;
-  }
-
-  .console-container {
-    margin: 0.25rem 0;
-  }
-
-  .intro-card {
-    margin: 0.25rem 0;
-    padding: 0.5rem;
+    padding: 1.2rem;
+    max-height: calc(100vh - 80px);
   }
 }
 
