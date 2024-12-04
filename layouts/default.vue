@@ -247,10 +247,11 @@ export default {
 @media (max-width: 600px) {
   /* Reset all container paddings */
   :deep(.v-container) {
-    padding: 16px !important;
+    padding: 0 8px !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: calc(100vh - 112px) !important;
   }
 
   /* App bar specific styles */
@@ -265,7 +266,7 @@ export default {
     padding-top: 56px !important;
     
     .v-container {
-      padding: 16px !important;
+      padding: 0 8px !important;
     }
   }
 
@@ -305,6 +306,22 @@ export default {
   .nav-link {
     padding: 0 8px !important;
     font-size: 0.9rem;
+  }
+}
+
+/* Extra small height screens */
+@media (max-height: 600px) {
+  :deep(.v-main) {
+    .v-container {
+      height: calc(100vh - 96px) !important;
+    }
+  }
+
+  :deep(.v-app-bar) {
+    height: 48px !important;
+    .v-toolbar__content {
+      min-height: 48px !important;
+    }
   }
 }
 </style>
