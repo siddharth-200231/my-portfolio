@@ -6,14 +6,14 @@
     </div>
 
     <!-- Main Content -->
-    <v-row no-gutters align="center" justify="center" class="content-height">
+    <v-row no-gutters align="center" justify="center" class="main-content">
       <v-col cols="12" sm="10" md="8" lg="6" class="content-wrapper">
         <div class="glass-card">
           <!-- Profile Section -->
           <div class="text-center">
             <!-- Avatar with Glow Effect -->
             <div class="avatar-container">
-              <v-avatar :size="$vuetify.display.smAndDown ? 100 : 120" class="profile-avatar">
+              <v-avatar :size="$vuetify.display.smAndDown ? 80 : 100" class="profile-avatar">
                 <v-img
                   src="/images/profile.jpeg"
                   alt="Profile"
@@ -139,6 +139,9 @@ onMounted(() => {
   position: relative;
   z-index: 2;
   padding: clamp(0.5rem, 3vw, 1.5rem);
+  max-height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .glass-card {
@@ -150,6 +153,9 @@ onMounted(() => {
   box-shadow: 
     0 0 20px rgba(0, 255, 255, 0.1),
     inset 0 0 20px rgba(0, 255, 255, 0.05);
+  max-height: calc(100vh - 140px);
+  overflow: auto;
+  margin: auto;
 }
 
 .avatar-container {
@@ -178,6 +184,8 @@ onMounted(() => {
   overflow: hidden;
   border: 1px solid rgba(0, 255, 255, 0.2);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  margin: 1rem auto;
+  max-width: 100%;
 }
 
 .console-header {
@@ -210,9 +218,10 @@ onMounted(() => {
 }
 
 .console-content {
-  padding: 1rem;
-  min-height: 60px;
-  max-height: 80px;
+  padding: 0.75rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .prompt {
@@ -263,7 +272,8 @@ onMounted(() => {
   background: rgba(0, 255, 255, 0.05);
   border-radius: 10px;
   padding: clamp(0.75rem, 2vw, 1rem);
-  margin: 1rem 0;
+  margin: 1rem auto;
+  max-width: 100%;
   border: 1px solid rgba(0, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
@@ -323,52 +333,44 @@ onMounted(() => {
 @media (max-width: 600px) {
   .glass-card {
     padding: 0.75rem;
-    margin: 0.5rem;
+    margin: auto;
+    width: 95%;
   }
 
   .console-content {
-    padding: 0.75rem;
-    min-height: 50px;
-  }
-
-  .intro-card {
     padding: 0.5rem;
-    margin: 0.5rem 0;
-  }
-
-  .download-btn {
-    width: 100%;
-    padding: 0.5rem 1rem !important;
-    font-size: 0.9rem;
+    height: 50px;
   }
 }
 
 /* Small height screens */
 @media (max-height: 700px) {
+  .main-content {
+    height: calc(100vh - 100px);
+  }
+
+  .glass-card {
+    padding: 0.75rem;
+    max-height: calc(100vh - 120px);
+  }
+
   .avatar-container {
     margin-bottom: 0.5rem;
   }
 
   .console-container {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
   }
 
   .intro-card {
-    margin: 0.5rem 0;
+    margin: 0.25rem 0;
     padding: 0.5rem;
-  }
-
-  .terminal-font {
-    font-size: 0.9rem;
-  }
-
-  .intro-text {
-    font-size: 0.85rem;
-    line-height: 1.4;
   }
 }
 
-.content-height {
-  min-height: calc(100vh - 80px); /* Adjust based on your footer height */
+/* Hide scrollbar but keep functionality */
+.glass-card::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 </style>
