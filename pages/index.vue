@@ -332,7 +332,7 @@ onMounted(() => {
 /* Mobile optimizations */
 @media (max-width: 600px) {
   .glass-card {
-    padding: 0.75rem;
+    padding: 0.7rem;
     margin: auto;
     width: 95%;
   }
@@ -340,6 +340,11 @@ onMounted(() => {
   .console-content {
     padding: 0.5rem;
     height: 50px;
+  }
+
+  .download-btn {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 0.6rem !important;
   }
 }
 
