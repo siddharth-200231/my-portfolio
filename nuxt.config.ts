@@ -1,15 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
-  // Enables Nuxt.js development tools in the browser.
-  devtools: { enabled: true },
   modules: [
     '@nuxt/image',
     // other modules...
+    'vuetify-nuxt-module',
   ],
 
   css: [
-    '~/assets/css/main.css', // Custom main CSS file.
-    'animate.css/animate.min.css', // Animate.css for animations.
+    'animate.css/animate.min.css',
+    '~/assets/css/main.css',
+    '@mdi/font/css/materialdesignicons.min.css'
   ],
 
   postcss: {
@@ -21,6 +23,28 @@ export default defineNuxtConfig({
 
   // Compatibility date for your project.
   compatibilityDate: '2024-09-24',
-
-  modules: ['@nuxt/image']
+  plugins: [],
+  vuetify: {
+    moduleOptions: {
+      styles: true, // Enable Vuetify styles
+    },
+    vuetifyOptions: {
+      theme: {
+        defaultTheme: 'dark',
+        themes: {
+          dark: {
+            dark: true,
+            colors: {
+              primary: '#39ff14',
+              secondary: '#424242',
+              background: '#121212',
+            }
+          }
+        }
+      },
+      icons: {
+        defaultSet: 'mdi',
+      },
+    },
+  },
 });
