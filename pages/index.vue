@@ -311,20 +311,65 @@ onMounted(() => {
 }
 
 .glass-card {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  padding: clamp(1rem, 3vw, 1.5rem);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(10, 25, 47, 0.85) 100%
+  );
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 255, 0.1);
   box-shadow: 
-    0 0 20px rgba(0, 255, 255, 0.1),
-    inset 0 0 20px rgba(0, 255, 255, 0.05);
-  max-height: calc(100vh - 140px);
-  overflow: auto;
+    0 0 30px rgba(0, 255, 255, 0.05),
+    inset 0 0 30px rgba(0, 255, 255, 0.02),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+  isolation: isolate;
+  position: relative;
+  overflow: hidden;
+  width: clamp(300px, 95%, 1200px);
   margin: auto;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transition: transform 0.5s ease;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: clamp(12px, 2vw, 20px);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+/* Add subtle light beam effect */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transform: translate(-100%, -100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::after {
+  opacity: 0.5;
+  transform: translate(0, 0);
 }
 
 .glass-card-inner {
@@ -676,5 +721,38 @@ onMounted(() => {
 .page-leave-from {
   opacity: 1;
   transform: translateY(0);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(100px, 20vw, 150px), 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-item {
+  aspect-ratio: 1;
+  background: rgba(0, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  background: rgba(0, 255, 255, 0.05);
+  border-color: rgba(0, 255, 255, 0.2);
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 255, 255, 0.2);
 }
 </style>
