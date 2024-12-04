@@ -36,7 +36,7 @@
               </div>
               <div class="console-content">
                 <span class="prompt">$ </span>
-                <span id="text" class="terminal-font"></span>
+                <span class="terminal-font" :class="{ 'typing': isTyping }">{{ currentText }}</span>
               </div>
             </div>
 
@@ -68,63 +68,51 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const consoleText = (words, id, colors) => {
-  if (colors === undefined) colors = ["#fff"]
-  let visible = true
-  let letterCount = 1
-  let x = 1
-  let waiting = false
-  let target = document.getElementById(id)
+const currentText = ref('')
+const isTyping = ref(true)
+const currentIndex = ref(0)
+const messageIndex = ref(0)
+
+const messages = [
+  'Hello World! 👋',
+  "I'm Siddharth Sahu 🤠",
+  'Full Stack Developer 💻',
+  'MERN Stack Specialist 🚀',
+  'Problem Solver 🧩',
+  "Let's Build Something Amazing 🌐",
+]
+
+const typeText = async () => {
+  const message = messages[messageIndex.value]
   
-  if (!target) return
-
-  target.setAttribute('style', 'color:' + colors[0])
-
-  window.setInterval(() => {
-    if (letterCount === 0 && !waiting) {
-      waiting = true
-      target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(() => {
-        const usedColor = colors.shift()
-        colors.push(usedColor)
-        const usedWord = words.shift()
-        words.push(usedWord)
-        x = 1
-        target.setAttribute('style', 'color:' + colors[0])
-        letterCount += x
-        waiting = false
-      }, 1000)
-    } else if (letterCount === words[0].length + 1 && !waiting) {
-      waiting = true
-      window.setTimeout(() => {
-        x = -1
-        letterCount += x
-        waiting = false
-      }, 1000)
-    } else if (!waiting) {
-      target.innerHTML = words[0].substring(0, letterCount)
-      letterCount += x
-    }
-  }, 120)
+  // Typing animation
+  while (currentIndex.value < message.length) {
+    await new Promise(resolve => setTimeout(resolve, 50))
+    currentText.value = message.slice(0, currentIndex.value + 1)
+    currentIndex.value++
+  }
+  
+  // Pause at the end of the message
+  await new Promise(resolve => setTimeout(resolve, 2000))
+  
+  // Backspace animation
+  while (currentIndex.value > 0) {
+    await new Promise(resolve => setTimeout(resolve, 30))
+    currentIndex.value--
+    currentText.value = message.slice(0, currentIndex.value)
+  }
+  
+  // Move to next message
+  messageIndex.value = (messageIndex.value + 1) % messages.length
+  
+  // Start next iteration
+  typeText()
 }
 
 onMounted(() => {
-  setTimeout(() => {
-    consoleText(
-      [
-        'Hello World! 👋',
-        "I'm Siddharth Sahu 🤠",
-        'Full Stack Developer 💻',
-        'MERN Stack Specialist 🚀',
-        'Problem Solver 🧩',
-        "Let's Build Something Amazing 🌐",
-      ],
-      'text',
-      ['#64ffda']
-    )
-  }, 500)
+  setTimeout(typeText, 500)
 })
 </script>
 
@@ -238,19 +226,37 @@ onMounted(() => {
   color: #00ffff;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
   position: relative;
+  display: inline-block;
+  white-space: pre;
 }
 
 .terminal-font::after {
   content: '|';
   position: absolute;
   right: -4px;
-  animation: cursor 1s infinite;
+  animation: cursor 0.8s ease-in-out infinite;
   color: #00ffff;
 }
 
 @keyframes cursor {
+  0%, 100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% { 
+    opacity: 0;
+    transform: translateY(1px);
+  }
+}
+
+.typing {
+  border-right: none;
+  animation: typing 0.5s steps(1) infinite;
+}
+
+@keyframes typing {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  50% { opacity: 0.8; }
 }
 
 .intro-card {
