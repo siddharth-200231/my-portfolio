@@ -158,13 +158,11 @@ export default {
 
 /* Container Styling */
 .v-container {
-  background: rgba(15, 15, 15, 0.7);
-  border: 1px solid rgba(0, 255, 255, 0.1);
+  background: transparent;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
 
   &:hover {
-    border-color: rgba(0, 255, 255, 0.2);
     box-shadow: 
       0 8px 32px rgba(0, 0, 0, 0.4),
       0 0 0 1px rgba(0, 255, 255, 0.1);
