@@ -5,10 +5,23 @@
       <v-toolbar-title class="font-weight-bold text-truncate" style="max-width: 150px;">My Portfolio</v-toolbar-title>
       <v-spacer></v-spacer>
       
-      <!-- Mobile Hamburger Menu -->
-      <v-btn icon @click="toggleMenu" class="d-sm-none">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      <!-- Mobile Menu -->
+      <v-menu bottom left class="d-sm-none">
+        <template v-slot:activator="{ props }">
+          <v-btn icon v-bind="props">
+            <v-icon>mdi-menu</v-icon>
+          </v-btn>
+        </template>
+        
+        <v-list>
+          <v-list-item v-for="link in links" 
+                       :key="link.name" 
+                       :to="link.path"
+                       class="mobile-nav-item">
+            {{ link.name }}
+          </v-list-item>
+        </v-list>
+      </v-menu>
       
       <!-- Desktop Navigation Links -->
       <v-row class="d-none d-sm-flex align-center justify-end">
@@ -17,15 +30,6 @@
         </v-btn>
       </v-row>
     </v-app-bar>
-
-    <!-- Mobile Navigation Drawer -->
-    <v-navigation-drawer v-model="isOpen" app temporary>
-      <v-list dense>
-        <v-list-item v-for="link in links" :key="link.name" :to="link.path" @click="closeMenu">
-          {{ link.name }}
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
     <!-- Main Content -->
     <v-main>
@@ -61,7 +65,6 @@ export default {
   name: "DefaultLayout",
   data() {
     return {
-      isOpen: false,
       links: [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' },
@@ -74,14 +77,6 @@ export default {
         { name: 'LeetCode', link: 'https://leetcode.com/u/siddharth_123456/', icon: 'mdi-code-tags' }
       ]
     };
-  },
-  methods: {
-    toggleMenu() {
-      this.isOpen = !this.isOpen;
-    },
-    closeMenu() {
-      this.isOpen = false;
-    },
   },
 };
 </script>
@@ -206,21 +201,15 @@ export default {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Mobile Navigation */
-:deep(.v-navigation-drawer) {
-  background: rgba(10, 10, 10, 0.95) !important;
-  border-right: 2px solid rgba(0, 255, 255, 0.1);
+/* Mobile Menu Items */
+:deep(.v-list-item.mobile-nav-item) {
+  margin: 4px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
   
-  .v-list-item {
-    margin: 4px;
-    border: 1px solid transparent;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      border-color: rgba(0, 255, 255, 0.3);
-      background: rgba(0, 255, 255, 0.05) !important;
-      transform: translateX(4px);
-    }
+  &:hover {
+    border-color: rgba(0, 255, 255, 0.3);
+    background: rgba(0, 255, 255, 0.05) !important;
   }
 }
 
@@ -289,12 +278,6 @@ export default {
   /* Individual social buttons */
   .social-btn {
     margin: 0 !important;
-  }
-
-  /* Mobile Navigation Drawer */
-  .v-navigation-drawer {
-    max-width: 300px !important;
-    width: 100% !important;
   }
 }
 
