@@ -1,56 +1,56 @@
 <template>
-  <div class="relative min-h-screen bg-gray-900 text-gray-100">
+  <div class="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
     <!-- Animated Particle Background -->
     <div class="absolute inset-0 z-0">
       <canvas id="particles"></canvas>
     </div>
 
-    <div class="container mx-auto p-6 z-10">
-      <h1 class="text-4xl font-bold mb-6 text-center animate__animated animate__fadeIn">Projects</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
+    <div class="container mx-auto px-4 py-12 relative z-10">
+      <h1 class="text-5xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400 animate__animated animate__fadeIn">
+        Featured Projects
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Project Card 1 -->
-        <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.2s">
-          <div class="bg-animation"></div>
-          <img src="../assets/images/ecomm.png" alt="E-Commerce Platform" class="project-image" />
-          <div class="p-4">
-            <h3 class="text-2xl font-bold mb-2 text-blue-500">Secure E-Commerce Platform</h3>
-            <p class="text-gray-300 mb-4">
-              Developed a secure e-commerce platform using React, Node.js, Express.js, and MongoDB, with JWT-based authentication and bcrypt password encryption.
-            </p>
-            <a href="https://siddstore.vercel.app" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
+        <div class="project-card group">
+          <div class="card-content">
+            <div class="relative overflow-hidden rounded-t-xl h-48">
+              <img 
+                src="../assets/images/ecomm.png" 
+                alt="E-Commerce Platform" 
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            </div>
+            
+            <div class="p-6 bg-gray-800/90 rounded-b-xl">
+              <h3 class="text-2xl font-bold mb-3 text-purple-400">Secure E-Commerce Platform</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                Developed a secure e-commerce platform using React, Node.js, Express.js, and MongoDB, with JWT-based authentication and bcrypt password encryption.
+              </p>
+              
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="tech-badge">React</span>
+                <span class="tech-badge">Node.js</span>
+                <span class="tech-badge">MongoDB</span>
+                <span class="tech-badge">JWT</span>
+              </div>
+
+              <a 
+                href="https://siddstore.vercel.app" 
+                target="_blank"
+                class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
+              >
+                <span>View Project</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
-        <!-- Project Card 2 -->
-        <div class="project-card animate__animated animate__fadeInLeft animate__delay-0.4s">
-          <div class="bg-animation"></div>
-          <img src="../assets/images/loginn.jpeg" alt="User Authentication System" class="project-image" />
-          <div class="p-4">
-            <h3 class="text-2xl font-bold mb-2 text-blue-500">User Authentication System</h3>
-            <p class="text-gray-300 mb-4">
-              Built a user authentication system with Express.js, incorporating JWT for session management and Bcrypt for password encryption.
-            </p>
-            <a href="https://your-auth-system-link.com" class="text-green-400 hover:underline hover:text-green-500">Live Link</a>
-          </div>
-        </div>
-
-        <!-- Project Card 3 -->
-       
-        <!-- Project Card 3 -->
-<div class="project-card animate__animated animate__fadeInRight animate__delay-0.6s">
-  <div class="bg-animation"></div>
-  <img src="../assets/images/download.jpeg" alt="Heart Disease Detection Model" class="w-full h-40 object-contain rounded-t-lg transition-transform duration-300 transform hover:scale-105" />
-  <div class="p-4">
-    <h3 class="text-2xl font-bold mb-2 text-blue-500">Heart Disease Detection Model</h3>
-    <p class="text-gray-300 mb-4">
-      Developed a heart disease prediction model using Random Forest, achieving 82% accuracy. Utilized Python, Scikit-learn, Pandas, and Numpy for data preprocessing and feature engineering.
-    </p>
-  </div>
-</div>
-
-        <!-- Add more project cards similarly -->
-        
+        <!-- Add similar structure for other project cards -->
       </div>
     </div>
   </div>
@@ -117,72 +117,41 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.project-card {
+  @apply transform transition-all duration-300 hover:-translate-y-2;
+  perspective: 1000px;
+}
+
+.card-content {
+  @apply bg-gray-800/90 rounded-xl overflow-hidden shadow-xl;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform-style: preserve-3d;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-card:hover .card-content {
+  @apply shadow-2xl;
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.tech-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium bg-purple-900/50 text-purple-300 border border-purple-700/50;
+}
+
 #particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
+  @apply absolute inset-0;
+  background: transparent;
+}
+
+/* Add animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 .project-card {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(145deg, #2a2d34, #1f2937);
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: calc(var(--animation-order) * 0.1s);
 }
-
-.project-card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
-}
-
-.bg-animation {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  animation: pulse 3s infinite;
-  z-index: 1;
-}
-
-.project-image {
-  width: 100%;
-  height: 40%;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  z-index: 2; /* Ensures the image is above the background animation */
-}
-
-.project-card:hover .project-image {
-  transform: scale(1.05);
-}
-
-h3 {
-  position: relative;
-  z-index: 2; /* Ensures text is above the overlay */
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-}
-
-@import "~animate.css/animate.min.css"; /* Ensure to install animate.css via npm or link in your project */
 </style>

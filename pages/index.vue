@@ -288,12 +288,11 @@ onMounted(() => {
   position: absolute;
   inset: 0;
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(0, 255, 255, 0.15) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.15) 1px, transparent 1px),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px, 50px 50px, 25px 25px;
+    radial-gradient(circle at 25% 25%, rgba(100, 255, 218, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(100, 255, 218, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px;
   animation: particleFloat 150s linear infinite;
-  opacity: 0.7;
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
@@ -313,17 +312,15 @@ onMounted(() => {
 .glass-card {
   background: linear-gradient(
     165deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(10, 25, 47, 0.95) 50%,
-    rgba(0, 0, 0, 0.9) 100%
+    rgba(2, 12, 27, 0.95) 0%,
+    rgba(10, 25, 47, 0.98) 50%,
+    rgba(2, 12, 27, 0.95) 100%
   );
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(0, 255, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(100, 255, 255, 0.1);
   box-shadow: 
-    0 0 50px rgba(0, 255, 255, 0.07),
-    inset 0 0 50px rgba(0, 255, 255, 0.03),
-    0 2px 15px rgba(0, 0, 0, 0.3);
+    0 0 30px rgba(0, 255, 255, 0.03),
+    inset 0 0 30px rgba(0, 255, 255, 0.02);
   isolation: isolate;
   position: relative;
   overflow: hidden;
@@ -421,11 +418,11 @@ onMounted(() => {
 }
 
 .console-container {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(2, 12, 27, 0.98);
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(100, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   margin: 1rem auto;
   max-width: 100%;
 }
@@ -460,8 +457,8 @@ onMounted(() => {
 }
 
 .console-content {
-  padding: 0.75rem;
-  height: 60px;
+  padding: 1rem;
+  height: 70px;
   display: flex;
   align-items: center;
 }
@@ -474,8 +471,8 @@ onMounted(() => {
 .terminal-font {
   font-family: 'Fira Code', monospace;
   font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-  color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  color: #64ffda;
+  text-shadow: 0 0 8px rgba(100, 255, 255, 0.3);
   position: relative;
   display: inline-block;
   white-space: pre;
@@ -511,21 +508,22 @@ onMounted(() => {
 }
 
 .intro-card {
-  background: rgba(0, 255, 255, 0.05);
+  background: rgba(2, 12, 27, 0.7);
   border-radius: 10px;
-  padding: clamp(0.75rem, 2vw, 1rem);
+  padding: 1.5rem;
   margin: 1rem auto;
   max-width: 100%;
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(100, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
 }
 
 .intro-text {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-  line-height: 1.6;
+  color: #8892b0;
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
 }
 
 .button-container {
@@ -534,12 +532,14 @@ onMounted(() => {
 }
 
 .download-btn {
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 255, 255, 0.2)) !important;
-  border: 1px solid rgba(0, 255, 255, 0.3) !important;
-  color: #00ffff !important;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(100, 255, 218, 0.2)) !important;
+  border: 1px solid rgba(100, 255, 218, 0.3) !important;
+  color: #64ffda !important;
   padding: 0.8rem 2rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 1px;
+  font-weight: 500 !important;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 0.9rem !important;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease !important;
@@ -550,7 +550,7 @@ onMounted(() => {
   transform: translateY(-2px);
   box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2) !important;
   border-color: rgba(0, 255, 255, 0.5) !important;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 255, 255, 0.3)) !important;
+  background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(100, 255, 218, 0.3)) !important;
 }
 
 @keyframes glowPulse {
@@ -571,88 +571,117 @@ onMounted(() => {
   to { background-position: 1000px 1000px; }
 }
 
-/* Mobile optimizations */
+/* Mobile optimizations with reduced spacing */
 @media (max-width: 600px) {
+  .content-wrapper {
+    padding: 0.25rem;
+    padding-top: 0.5rem; /* Minimal top padding */
+    min-height: 100vh;
+    justify-content: flex-start;
+  }
+
   .glass-card {
     width: 100%;
     margin: 0;
-    padding: 1rem;
-    min-height: 100vh;
-    border-radius: 0;
-    background: linear-gradient(
-      165deg,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(10, 25, 47, 0.99) 100%
-    );
-  }
-
-  .content-wrapper {
     padding: 0.75rem;
-    gap: 1.2rem;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    max-height: 750px; /* Reduced max height */
+    margin-top: -3rem; /* Moved up more */
+    overflow-y: auto;
   }
 
-  :deep(.v-navigation-drawer) {
-    display: none !important;
-  }
-
-  :deep(.v-main) {
-    padding-left: 0 !important;
-  }
-
-  .intro-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0.75rem 0;
-    text-align: center;
-    padding: 0 0.75rem;
-  }
-
-  .console-container {
-    margin: 0.75rem auto;
-    width: 92%;
+  /* Tighter avatar spacing */
+  .avatar-container {
+    margin-bottom: 0.25rem;
   }
 
   .profile-avatar {
-    width: 85px !important;
-    height: 85px !important;
-    margin: 1rem auto;
+    margin: 0.25rem auto;
   }
 
-  .button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
+  /* Reduced console height and margins */
+  .console-container {
+    margin: 0.25rem auto;
   }
 
-  .download-btn {
-    width: auto;
-    min-width: 160px;
-    max-width: 220px;
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 360px) {
-  .glass-card {
-    padding: 0.75rem;
-  }
-
-  .content-wrapper {
+  .console-content {
+    height: 50px; /* Shorter console */
     padding: 0.5rem;
   }
 
-  .console-container {
-    width: 96%;
+  /* Compact intro card */
+  .intro-card {
+    margin: 0.25rem auto;
+    padding: 0.75rem;
+  }
+
+  .intro-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Adjusted button spacing */
+  .button-container {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Adjust floating menu position */
+  .floating-menu {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  /* Adjust scroll indicator */
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+
+  /* Mobile optimizations for download button text */
+  .download-btn {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 0.65rem !important; /* Smaller font size */
+    width: auto !important;
+    min-width: 160px !important;
+    max-width: 80% !important;
+    letter-spacing: 0.5px;
+  }
+
+  .download-btn .v-icon {
+    font-size: 0.9rem !important; /* Smaller icon to match text */
+    margin-right: 0.4rem !important;
+  }
+}
+
+/* Even tighter spacing for shorter screens */
+@media (max-width: 600px) and (max-height: 700px) {
+  .glass-card {
+    margin-top: -3.5rem;
+    max-height: 700px;
+    padding: 0.5rem;
+  }
+
+  .console-content {
+    height: 45px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .glass-card {
+    margin-top: -4rem;
+    padding: 0.5rem;
+  }
+
+  /* Even smaller for very small screens */
+  .download-btn {
+    font-size: 0.6rem !important;
+    min-width: 150px !important;
   }
 }
 
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -667,18 +696,19 @@ onMounted(() => {
 }
 
 .scroll-arrow {
-  width: 20px;
-  height: 20px;
-  border-right: 2px solid #00ffff;
-  border-bottom: 2px solid #00ffff;
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid #64ffda;
+  border-bottom: 2px solid #64ffda;
   transform: rotate(45deg);
   animation: scrollBounce 2s infinite;
 }
 
 .scroll-text {
   margin-top: 1rem;
-  color: #00ffff;
-  font-size: 0.8rem;
+  color: #8892b0;
+  font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -703,8 +733,8 @@ onMounted(() => {
 
 .floating-menu {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 2.5rem;
+  right: 2.5rem;
   z-index: 1000;
 }
 
@@ -712,11 +742,11 @@ onMounted(() => {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #00ffff, #00ccff);
+  background: linear-gradient(135deg, #64ffda, #48c9b0);
   border: none;
   color: white;
   cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.2);
   transition: transform 0.3s ease;
 }
 
@@ -747,17 +777,19 @@ onMounted(() => {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(0, 255, 255, 0.2);
+  background: rgba(2, 12, 27, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #00ffff;
+  color: #64ffda;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  border: 1px solid rgba(100, 255, 218, 0.2);
 }
 
 .menu-items a:hover {
-  background: rgba(0, 255, 255, 0.3);
+  background: rgba(2, 12, 27, 0.95);
+  border-color: rgba(100, 255, 218, 0.4);
   transform: scale(1.1);
 }
 

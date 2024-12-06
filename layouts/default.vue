@@ -6,7 +6,7 @@
       <v-spacer></v-spacer>
       
       <!-- Mobile Menu -->
-      <v-menu bottom left class="d-sm-none">
+      <v-menu bottom left class="d-md-none">
         <template v-slot:activator="{ props }">
           <v-btn icon v-bind="props">
             <v-icon>mdi-menu</v-icon>
@@ -24,7 +24,7 @@
       </v-menu>
       
       <!-- Desktop Navigation Links -->
-      <v-row class="d-none d-sm-flex align-center justify-end">
+      <v-row class="d-none d-md-flex align-center justify-end">
         <v-btn v-for="link in links" :key="link.name" :to="link.path" text class="nav-link">
           {{ link.name }}
         </v-btn>
