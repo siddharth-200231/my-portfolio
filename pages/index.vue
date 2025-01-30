@@ -1,134 +1,206 @@
 <template>
   <v-container fluid class="pa-0 min-h-screen">
-    <!-- Cyberpunk-style Animated Background -->
-    <div class="cyber-background">
-      <div class="grid-lines"></div>
-      <div class="holographic-overlay"></div>
+    <!-- Cyberpunk Matrix Background -->
+    <div class="cyber-matrix">
+      <div class="binary-rain"></div>
+      <div class="hologram-grid"></div>
       <canvas id="cyberParticles" class="particles"></canvas>
+      <div class="energy-pulse"></div>
     </div>
 
-    <!-- Main Content with Floating Effect -->
+    <!-- Morphing Main Content -->
     <v-row no-gutters align="center" justify="center" class="main-content">
-      <v-col cols="12" sm="10" md="8" lg="6" class="content-wrapper">
-        <div class="cyber-card">
-          <!-- Holographic Avatar -->
-          <div class="avatar-hologram">
-            <div class="hologram-effect"></div>
-            <v-avatar
-              :size="$vuetify.display.smAndDown ? 120 : 140"
-              class="cyber-avatar"
-            >
+      <v-col
+        cols="12"
+        xs="11"
+        sm="10"
+        md="8"
+        lg="6"
+        xl="5"
+        class="content-wrapper"
+      >
+        <div class="cyber-core">
+          <!-- Nanotech Avatar -->
+          <div class="nano-avatar" @mousemove="handleAvatarHover">
+            <div class="nanites"></div>
+            <div class="hologram-ring"></div>
+            <v-avatar :size="avatarSize" class="quantum-avatar">
               <v-img
                 :src="'/images/profile.jpeg'"
                 alt="Profile"
-                class="avatar-image"
+                class="avatar-matrix"
                 @error="handleImageError"
               />
             </v-avatar>
           </div>
 
-          <!-- Neon Terminal -->
-          <div class="neon-terminal my-8">
-            <div class="terminal-glitch"></div>
-            <div class="terminal-content">
-              <span class="prompt">></span>
-              <span class="terminal-text" :class="{ glitch: isGlitching }">{{
+          <!-- Neural Interface Terminal -->
+          <div class="neural-terminal my-8">
+            <div class="synapse-effect"></div>
+            <div class="brainwave-pattern"></div>
+            <div class="terminal-interface">
+              <span class="neural-prompt">NEURAL_INTERFACE></span>
+              <span class="synapse-text" :class="{ glitch: isGlitching }">{{
                 currentText
               }}</span>
-              <span class="cursor">_</span>
+              <span class="neural-cursor">◈</span>
             </div>
           </div>
 
-          <!-- Cyberpunk Introduction -->
-          <div class="cyber-intro">
-            <div class="scanline"></div>
-            <p class="intro-text">
-              <span class="keyword">>> FULL_STACK_ENGINEER</span><br />
-              Specializing in <span class="highlight">React</span> •
-              <span class="highlight">Node.js</span> •
-              <span class="highlight">FULL_STACK_DEV</span><br />
-              Building
-              <span class="gradient-text">next-gen web ecosystems</span>
+          <!-- CyberDNA Introduction -->
+          <div class="cyber-dna">
+            <div class="dna-strand"></div>
+            <div class="genetic-pattern"></div>
+            <p class="dna-sequence">
+              <span class="cybercode neon-scan">>> CYBER_DEVELOPER_v4.2.0</span
+              ><br />
+              <span class="typeout-code">[Specialization] </span>
+              <span class="nanotech rotating-tech"></span><br />
+              <span class="typeout-code">[Mission] </span>
+              <span class="quantum-text cyber-mutation"
+                >Constructing_Digital_Realities</span
+              >
             </p>
           </div>
 
-          <!-- Animated Download Button -->
-          <div class="cyber-button-container">
-            <button class="cyber-button" @click="handleDownload">
-              <span class="cyber-button-text">DOWNLOAD_CV.ISO</span>
-              <span class="cyber-button-glow"></span>
-              <span class="cyber-button-border"></span>
+          <!-- Quantum Download -->
+          <div class="quantum-download">
+            <button class="data-stream" @click="handleDownload">
+              <span class="stream-text">DOWNLOAD_PROFILE.cyber</span>
+              <div class="stream-flow"></div>
+              <div class="quantum-glow"></div>
             </button>
           </div>
         </div>
       </v-col>
     </v-row>
 
-    <!-- Floating Navigation Dots -->
-    <div class="cyber-nav">
-      <div class="nav-dot active"></div>
-      <div class="nav-dot"></div>
-      <div class="nav-dot"></div>
+    <!-- Holographic Navigation -->
+    <div class="holo-nav">
+      <div
+        v-for="n in 3"
+        :key="n"
+        class="holo-node"
+        :class="{ active: n === 1 }"
+        @click="scrollToSection(n)"
+      >
+        <div class="node-core"></div>
+      </div>
     </div>
 
-    <!-- Animated Scroll Indicator -->
-    <div class="cyber-scroll">
-      <div class="scroll-line"></div>
-      <div class="scroll-pulse"></div>
+    <!-- Quantum Scroll -->
+    <div class="quantum-scroll" @click="scrollToContent">
+      <div class="quantum-ring"></div>
+      <div class="quantum-dot"></div>
     </div>
   </v-container>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
+import { useDisplay } from "vuetify";
 
 const currentText = ref("");
-const isTyping = ref(true);
 const isGlitching = ref(false);
-const currentIndex = ref(0);
 const messageIndex = ref(0);
+const techItems = ref(["React", "TensorFlow", "WebGL", "Rust", "Node.js"]);
+const currentTech = ref(0);
 
 const messages = [
-  "INITIALIZING SYSTEM...",
-  "WELCOME TO THE MATRIX",
-  "ACCESSING MAINFRAME...",
-  "USER: SIDDHARTH_SAHU",
-  "ROLE: FULL_STACK_DEV",
-  "STATUS: READY_TO_HACK",
+  "INITIALIZING_QUANTUM_SYSTEM...",
+  "ACCESSING_NEURAL_NETWORK...",
+  "USER_IDENTIFIED: SIDDHARTH_SAHU",
+  "CYBER_LEVEL: 99",
+  "SYSTEM_STATUS: OMEGA",
+  "CONNECTING_TO_METAVERSE...",
 ];
+
+const avatarSize = computed(() => {
+  const breakpoint = useDisplay();
+  if (breakpoint.xs) return 100;
+  if (breakpoint.sm) return 120;
+  if (breakpoint.md) return 140;
+  return 160;
+});
 
 const typeText = async () => {
   const message = messages[messageIndex.value];
-  const typingSpeed = 50;
+  let currentIndex = 0;
 
-  while (currentIndex.value < message.length) {
-    isGlitching.value = Math.random() < 0.1;
-    await new Promise((resolve) => setTimeout(resolve, typingSpeed));
-    currentText.value = message.slice(0, currentIndex.value + 1);
-    currentIndex.value++;
+  while (currentIndex < message.length) {
+    isGlitching.value = Math.random() < 0.2;
+    await new Promise((resolve) =>
+      setTimeout(resolve, 30 + Math.random() * 40)
+    );
+    currentText.value = message.slice(0, currentIndex + 1);
+    currentIndex++;
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
-  let deleteSpeed = 30;
-  while (currentIndex.value > 0) {
-    deleteSpeed = Math.max(10, deleteSpeed * 0.9);
-    await new Promise((resolve) => setTimeout(resolve, deleteSpeed));
-    currentIndex.value--;
-    currentText.value = message.slice(0, currentIndex.value);
+  while (currentIndex > 0) {
+    await new Promise((resolve) => setTimeout(resolve, 20));
+    currentIndex--;
+    currentText.value = message.slice(0, currentIndex);
   }
 
   messageIndex.value = (messageIndex.value + 1) % messages.length;
   typeText();
 };
 
-onMounted(() => {
-  setTimeout(typeText, 1000);
+const rotateTech = () => {
+  currentTech.value = (currentTech.value + 1) % techItems.value.length;
+  document.querySelector(".rotating-tech").textContent =
+    techItems.value[currentTech.value];
+  setTimeout(rotateTech, 1500);
+};
 
-  // Enhanced Particle System
+const handleAvatarHover = (e) => {
+  const avatar = e.currentTarget;
+  const rect = avatar.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  avatar.style.setProperty("--nanite-x", `${x}%`);
+  avatar.style.setProperty("--nanite-y", `${y}%`);
+};
+
+onMounted(() => {
+  typeText();
+  rotateTech();
+  initParticles();
+  initCyberEffects();
+});
+
+const initCyberEffects = () => {
+  const core = document.querySelector(".cyber-core");
+  core.addEventListener("mousemove", (e) => {
+    const rect = core.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 20;
+    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+
+    core.style.transform = `
+      perspective(1000px)
+      rotateX(${y}deg)
+      rotateY(${-x}deg)
+      scale(1.02)
+    `;
+    core.style.filter = `
+      drop-shadow(${-x}px ${y}px 15px rgba(0, 255, 255, 0.3))
+      drop-shadow(${x}px ${-y}px 15px rgba(255, 0, 255, 0.3))
+    `;
+  });
+
+  core.addEventListener("mouseleave", () => {
+    core.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+    core.style.filter = "none";
+  });
+};
+
+const initParticles = () => {
   const canvas = document.getElementById("cyberParticles");
   const ctx = canvas.getContext("2d");
   let particles = [];
+  let hue = 0;
 
   const resizeCanvas = () => {
     canvas.width = window.innerWidth;
@@ -138,438 +210,449 @@ onMounted(() => {
   resizeCanvas();
   window.addEventListener("resize", resizeCanvas);
 
-  class Particle {
+  class QuantumParticle {
     constructor() {
-      this.reset();
-      this.baseHue = Math.random() * 360;
+      this.reset(true);
     }
 
-    reset() {
-      this.x = Math.random() * canvas.width;
+    reset(initial = false) {
+      this.x = initial ? Math.random() * canvas.width : -50;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 2;
-      this.vy = (Math.random() - 0.5) * 2;
       this.size = Math.random() * 2 + 1;
-      this.life = 1;
-      this.decay = 0.001 + Math.random() * 0.02;
+      this.speedX = Math.random() * 3 + 1;
+      this.speedY = (Math.random() - 0.5) * 2;
+      this.color = `hsl(${hue}, 100%, 70%)`;
     }
 
     update() {
-      this.x += this.vx;
-      this.y += this.vy;
-      this.life -= this.decay;
-
-      if (this.life <= 0) this.reset();
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.x > canvas.width + 50) this.reset();
     }
 
     draw() {
-      ctx.fillStyle = `hsla(${this.baseHue}, 100%, 70%, ${this.life})`;
+      ctx.fillStyle = this.color;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
     }
   }
 
-  // Create particle array
-  for (let i = 0; i < 200; i++) particles.push(new Particle());
+  // Create particle matrix
+  for (let i = 0; i < 150; i++) particles.push(new QuantumParticle());
 
   const animate = () => {
-    ctx.fillStyle = "rgba(0, 0, 20, 0.1)";
+    ctx.fillStyle = "rgba(0, 0, 20, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    hue += 0.5;
     particles.forEach((particle) => {
       particle.update();
       particle.draw();
     });
 
+    // Create binary rain effect
+    ctx.fillStyle = "rgba(0, 255, 127, 0.1)";
+    ctx.font = "14px monospace";
+    for (let i = 0; i < 50; i++) {
+      ctx.fillText(
+        Math.random().toString(2).substr(2, 8),
+        Math.random() * canvas.width,
+        Math.random() * canvas.height
+      );
+    }
+
     requestAnimationFrame(animate);
   };
 
   animate();
-
-  // Parallax effect on card
-  const card = document.querySelector(".cyber-card");
-  card.addEventListener("mousemove", (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-
-    card.style.setProperty("--x", x);
-    card.style.setProperty("--y", y);
-  });
-});
-const handleDownload = () => {
-  // Replace with your CV file path
-  const cvPath = '/siddharthCv.pdf';
-  
-  // Create an anchor element
-  const link = document.createElement('a');
-  link.href = cvPath;
-  link.download = 'CV.pdf'; // Name for the downloaded file
-  
-  // Trigger download
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 };
 </script>
 
 <style scoped>
-.cyber-background {
+/* Cybernetic Matrix Styles */
+.cyber-matrix {
   position: fixed;
   inset: 0;
-  background: linear-gradient(45deg, #000318, #0a0a2e);
+  background: radial-gradient(ellipse at center, #000a1f 0%, #000 150%);
   z-index: 1;
   overflow: hidden;
 }
 
-.grid-lines {
+.binary-rain {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(
-      to right,
-      rgba(0, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: gridScroll 100s linear infinite;
-}
-
-.holographic-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(100, 255, 218, 0.1) 0%,
-    transparent 60%
+    to bottom,
+    transparent 95%,
+    rgba(0, 255, 127, 0.1) 100%
   );
-  animation: hologramPulse 8s infinite;
+  animation: matrixRain 60s linear infinite;
+  opacity: 0.2;
 }
 
-.particles {
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: screen;
-}
-
-@keyframes gridScroll {
+@keyframes matrixRain {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: 600px 600px;
+    background-position: 0 100%;
   }
 }
 
-@keyframes hologramPulse {
+.energy-pulse {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--pulse-x, 50%) var(--pulse-y, 50%),
+    rgba(0, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  animation: pulseWave 8s infinite;
+}
+
+@keyframes pulseWave {
   0%,
   100% {
-    opacity: 0.3;
+    opacity: 0;
     transform: scale(1);
   }
   50% {
-    opacity: 0.6;
-    transform: scale(1.02);
+    opacity: 0.4;
+    transform: scale(1.5);
   }
 }
 
 .content-wrapper {
   position: relative;
   z-index: 2;
-  padding: 2rem;
+  padding: 1rem;
 }
 
-.cyber-card {
-  --x: 0.5;
-  --y: 0.5;
-
-  background: rgba(0, 3, 24, 0.95);
+.cyber-core {
+  background: rgba(0, 5, 30, 0.98);
   border: 2px solid #00ffff;
   border-radius: 16px;
-  padding: 3rem 2rem;
-  backdrop-filter: blur(20px);
-  position: relative;
-  transform: perspective(1000px) rotateX(calc((var(--y) - 0.5) * 8deg))
-    rotateY(calc((var(--x) - 0.5) * -8deg));
-  box-shadow: 0 0 50px rgba(0, 255, 255, 0.2),
-    inset 0 0 20px rgba(0, 255, 255, 0.1);
-  transition: transform 0.3s ease-out;
+  padding: 2rem;
+  backdrop-filter: blur(40px);
+  box-shadow: 0 0 80px rgba(0, 255, 255, 0.3),
+    inset 0 0 30px rgba(0, 255, 255, 0.1),
+    0 0 120px rgba(255, 0, 255, 0.2) inset;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-.avatar-hologram {
+@media (max-width: 960px) {
+  .cyber-core {
+    padding: 1.5rem;
+    margin: 1rem;
+    border-width: 1px;
+  }
+}
+
+.nano-avatar {
   position: relative;
   display: inline-block;
   margin-bottom: 2rem;
+  cursor: crosshair;
 }
 
-.hologram-effect {
+.nanites {
   position: absolute;
   inset: -20px;
-  background: conic-gradient(from 45deg, #00ffff, #ff00ff, #00ffff);
+  background: radial-gradient(
+    circle at var(--nanite-x, 50%) var(--nanite-y, 50%),
+    rgba(0, 255, 255, 0.3) 0%,
+    transparent 70%
+  );
+  transition: all 0.3s ease;
+}
+
+.hologram-ring {
+  position: absolute;
+  inset: -15px;
+  border: 2px solid #ff00ff;
   border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.4;
-  animation: hologramSpin 6s linear infinite;
+  animation: hologramOrbit 4s linear infinite;
 }
 
-.cyber-avatar {
-  border: 3px solid #00ffff;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-  background: rgba(0, 0, 20, 0.9);
-  position: relative;
-}
-
-@keyframes hologramSpin {
-  from {
-    transform: rotate(0deg);
+@keyframes hologramOrbit {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: rotate(180deg) scale(1.2);
+    opacity: 0.4;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 0.8;
   }
 }
 
-.neon-terminal {
+.quantum-avatar {
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.3),
+    0 0 40px rgba(255, 0, 255, 0.3) inset;
   background: rgba(0, 0, 30, 0.9);
+}
+
+.neural-terminal {
+  background: linear-gradient(
+    145deg,
+    rgba(0, 10, 50, 0.9),
+    rgba(20, 0, 50, 0.9)
+  );
   border: 1px solid #00ffff;
   padding: 1.5rem;
-  position: relative;
   margin: 2rem 0;
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
 }
 
-.terminal-glitch {
+.synapse-effect {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    0deg,
-    transparent 45%,
-    rgba(255, 0, 0, 0.1) 50%,
-    transparent 55%
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0%,
+    rgba(0, 255, 255, 0.1) 2%,
+    transparent 4%
   );
-  animation: glitchScan 3s infinite;
+  animation: synapseFlow 20s linear infinite;
 }
 
-.terminal-content {
-  font-family: "Courier New", monospace;
-  color: #00ffff;
-  font-size: 1.2rem;
-  position: relative;
+@keyframes synapseFlow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
 }
 
-.cursor {
-  animation: cursorBlink 1s infinite;
+.terminal-interface {
+  font-family: "Source Code Pro", monospace;
+  color: #00ff9d;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
 }
 
-@keyframes cursorBlink {
+.neural-cursor {
+  animation: neuralPulse 0.8s ease infinite;
+}
+
+@keyframes neuralPulse {
   0%,
   100% {
     opacity: 1;
   }
   50% {
-    opacity: 0;
+    opacity: 0.3;
   }
 }
 
-@keyframes glitchScan {
-  0% {
-    top: -100%;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-.cyber-intro {
+.cyber-dna {
   position: relative;
   padding: 2rem;
   margin: 2rem 0;
-  border-left: 3px solid #00ffff;
-}
-
-.scanline {
-  position: absolute;
-  width: 100%;
-  height: 2px;
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 255, 255, 0.6) 50%,
+    rgba(0, 255, 255, 0.05) 50%,
     transparent 100%
   );
-  animation: scanline 8s linear infinite;
 }
 
-.intro-text {
-  color: #a0f0ff;
-  font-size: 1.1rem;
-  line-height: 1.8;
+.dna-strand {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #00ffff 0%, #ff00ff 50%, #00ffff 100%);
+  animation: dnaFlow 4s linear infinite;
 }
 
-.keyword {
-  color: #ff00ff;
-  font-weight: bold;
+@keyframes dnaFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
 }
 
-.highlight {
-  color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-}
-
-.gradient-text {
-  background: linear-gradient(45deg, #00ffff, #ff00ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.cyber-button-container {
+.quantum-download {
   position: relative;
   margin-top: 2rem;
 }
 
-.cyber-button {
+.data-stream {
   position: relative;
-  background: #000318;
+  background: #00051d;
   border: none;
-  padding: 1.5rem 3rem;
+  padding: 1.2rem 2.5rem;
   color: #00ffff;
-  font-family: monospace;
-  text-transform: uppercase;
+  font-family: "Oxanium", sans-serif;
+  font-size: 1.1rem;
   letter-spacing: 2px;
-  cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 15px) 0,
+    100% 15px,
+    100% 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
   transition: all 0.3s ease;
 }
 
-.cyber-button-border {
-  position: absolute;
-  inset: 0;
-  border: 2px solid #00ffff;
-  clip-path: polygon(
-    0 0,
-    calc(100% - 8px) 0,
-    100% 8px,
-    100% 100%,
-    8px 100%,
-    0 calc(100% - 8px)
-  );
-}
-
-.cyber-button-glow {
+.stream-flow {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    45deg,
+    90deg,
     transparent 0%,
     rgba(0, 255, 255, 0.3) 50%,
     transparent 100%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  animation: streamFlow 2s infinite;
 }
 
-.cyber-button:hover {
-  background: #000a2e;
-
-  .cyber-button-glow {
-    opacity: 1;
-    animation: buttonGlow 1.5s infinite;
-  }
-}
-
-@keyframes buttonGlow {
-  0%,
-  100% {
-    opacity: 0.5;
+@keyframes streamFlow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
   50% {
     opacity: 1;
   }
-}
-
-.cyber-nav {
-  position: fixed;
-  right: 2rem;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.nav-dot {
-  width: 12px;
-  height: 12px;
-  border: 2px solid #00ffff;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.nav-dot.active {
-  background: #00ffff;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-}
-
-.cyber-scroll {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.scroll-line {
-  width: 2px;
-  height: 40px;
-  background: #00ffff;
-  animation: scrollLine 2s infinite;
-}
-
-.scroll-pulse {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #00ffff;
-  border-radius: 50%;
-  animation: scrollPulse 2s infinite;
-}
-
-@keyframes scrollLine {
-  0% {
-    height: 0;
-    opacity: 0;
-  }
-  30% {
-    height: 40px;
-    opacity: 1;
-  }
   100% {
-    height: 0;
+    transform: translateX(100%);
     opacity: 0;
   }
 }
 
-@keyframes scrollPulse {
-  0% {
-    transform: translateY(0);
+.data-stream:hover {
+  background: #00103d;
+  transform: translateY(-2px);
+
+  .stream-flow {
     opacity: 1;
-  }
-  100% {
-    transform: translateY(40px);
-    opacity: 0;
   }
 }
 
 @media (max-width: 600px) {
-  .cyber-card {
-    padding: 2rem 1rem;
-    margin: 1rem;
+  .terminal-interface {
+    font-size: 0.9rem;
   }
 
-  .terminal-content {
-    font-size: 1rem;
-  }
-
-  .cyber-button {
+  .data-stream {
     padding: 1rem 2rem;
     font-size: 0.9rem;
+  }
+
+  .cyber-dna {
+    padding: 1rem;
+  }
+}
+
+/* Quantum Glitch Effects */
+.glitch {
+  position: relative;
+  animation: quantumGlitch 2s infinite;
+}
+
+@keyframes quantumGlitch {
+  0% {
+    text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+    transform: skew(0deg);
+  }
+  20% {
+    text-shadow: 3px -2px #ff00ff, -3px 2px #00ffff;
+    transform: skew(5deg);
+  }
+  40% {
+    text-shadow: -2px 3px #ff00ff, 2px -3px #00ffff;
+    transform: skew(-5deg);
+  }
+  60% {
+    text-shadow: 4px -1px #ff00ff, -4px 1px #00ffff;
+    transform: skew(3deg);
+  }
+  80% {
+    text-shadow: -1px 4px #ff00ff, 1px -4px #00ffff;
+    transform: skew(-3deg);
+  }
+  100% {
+    text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+    transform: skew(0deg);
+  }
+}
+
+.holo-nav {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.holo-node {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #00ffff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.holo-node.active {
+  border-color: #ff00ff;
+
+  .node-core {
+    background: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+  }
+}
+
+.node-core {
+  width: 8px;
+  height: 8px;
+  background: #00ffff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.quantum-scroll {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: quantumFloat 2s ease-in-out infinite;
+}
+
+@keyframes quantumFloat {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -20px);
   }
 }
 </style>

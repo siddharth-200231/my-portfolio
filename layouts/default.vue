@@ -1,58 +1,90 @@
 <template>
   <v-app>
-    <!-- Global Header -->
-    <v-app-bar app color="grey-darker" dark elevate-on-scroll>
-      <v-toolbar-title class="font-weight-bold text-truncate" style="max-width: 150px;">My Portfolio</v-toolbar-title>
+    <!-- Global Header with Cyberpunk Effects -->
+    <v-app-bar
+      app
+      color="grey-darker"
+      dark
+      elevate-on-scroll
+      class="cyber-header"
+    >
+      <v-toolbar-title class="cyber-title">
+        <span class="glitch-text" data-text="SIDDHARTH_SAHU"
+          >SIDDHARTH_SAHU</span
+        >
+      </v-toolbar-title>
+
+      <!-- Animated Navigation Links -->
       <v-spacer></v-spacer>
-      
-      <!-- Mobile Menu -->
-      <v-menu bottom left class="d-md-none">
+
+      <!-- Desktop Navigation -->
+      <div class="d-none d-md-flex nav-container">
+        <v-btn
+          v-for="link in links"
+          :key="link.name"
+          :to="link.path"
+          class="cyber-nav-btn"
+          variant="text"
+        >
+          <span class="btn-content">{{ link.name }}</span>
+          <span class="btn-glow"></span>
+        </v-btn>
+      </div>
+
+      <!-- Mobile Menu with Holographic Effect -->
+      <v-menu class="d-md-none" transition="scale-transition">
         <template v-slot:activator="{ props }">
-          <v-btn icon v-bind="props">
+          <v-btn v-bind="props" icon class="cyber-menu-btn">
             <v-icon>mdi-menu</v-icon>
           </v-btn>
         </template>
-        
-        <v-list>
-          <v-list-item v-for="link in links" 
-                       :key="link.name" 
-                       :to="link.path"
-                       class="mobile-nav-item">
-            {{ link.name }}
+
+        <v-list class="cyber-menu-list">
+          <v-list-item
+            v-for="link in links"
+            :key="link.name"
+            :to="link.path"
+            class="cyber-menu-item"
+          >
+            <span class="menu-text">{{ link.name }}</span>
+            <div class="menu-line"></div>
           </v-list-item>
         </v-list>
       </v-menu>
-      
-      <!-- Desktop Navigation Links -->
-      <v-row class="d-none d-md-flex align-center justify-end">
-        <v-btn v-for="link in links" :key="link.name" :to="link.path" text class="nav-link">
-          {{ link.name }}
-        </v-btn>
-      </v-row>
     </v-app-bar>
 
-    <!-- Main Content -->
-    <v-main>
-      <v-container>
-        <NuxtPage />
+    <!-- Main Content with Responsive Handling -->
+    <v-main class="cyber-main">
+      <v-container class="cyber-container">
+        <NuxtPage class="page-content" />
       </v-container>
     </v-main>
 
-    <!-- Footer -->
-    <v-footer app color="grey-darker" dark>
-      <v-container>
+    <!-- Animated Footer -->
+    <v-footer app color="grey-darker" dark class="cyber-footer">
+      <v-container class="footer-content">
         <v-row justify="center" no-gutters>
           <v-col cols="12" class="text-center">
-            <p class="footer-text mb-2">© 2024 Siddharth Sahu. All Rights Reserved.</p>
-            <div class="social-buttons">
-              <v-btn v-for="social in socials" 
-                     :key="social.name" 
-                     :href="social.link" 
-                     icon 
-                     class="social-btn mx-1">
-                <v-icon>{{ social.icon }}</v-icon>
-              </v-btn>
+            <!-- Social Links with Hover Effects -->
+            <div class="social-container">
+              <a
+                v-for="social in socials"
+                :key="social.name"
+                :href="social.link"
+                class="social-link"
+                target="_blank"
+                rel="noopener"
+              >
+                <v-icon class="social-icon">{{ social.icon }}</v-icon>
+                <div class="social-hover"></div>
+              </a>
             </div>
+
+            <!-- Copyright Text with Scanning Effect -->
+            <p class="copyright-text">
+              <span class="scanline"></span>
+              © 2024 CYBER_DEV_V4.2.0 • ALL SYSTEMS_OPERATIONAL
+            </p>
           </v-col>
         </v-row>
       </v-container>
@@ -62,30 +94,50 @@
 
 <script>
 export default {
-  name: "DefaultLayout",
+  name: "CyberLayout",
   data() {
     return {
       links: [
-        { name: 'Home', path: '/' },
-        { name: 'About', path: '/about' },
-        { name: 'Projects', path: '/projects' },
-        { name: 'Contact', path: '/contact' }
+        { name: "HOME", path: "/" },
+        { name: "BIO", path: "/about" },
+        { name: "PROJECTS", path: "/projects" },
+        { name: "CONTACT", path: "/contact" },
       ],
       socials: [
-        { name: 'LinkedIn', link: 'https://www.linkedin.com/in/siddharth-sahu-40aa57289/', icon: 'mdi-linkedin' },
-        { name: 'GitHub', link: 'https://github.com/siddharth-200231', icon: 'mdi-github' },
-        { name: 'LeetCode', link: 'https://leetcode.com/u/siddharth_123456/', icon: 'mdi-code-tags' }
-      ]
+        {
+          name: "LinkedIn",
+          link: "https://linkedin.com",
+          icon: "mdi-linkedin",
+        },
+        { name: "GitHub", link: "https://github.com", icon: "mdi-github" },
+        {
+          name: "LeetCode",
+          link: "https://leetcode.com",
+          icon: "mdi-code-tags",
+        },
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-/* General Body Background */
+/* Cyberpunk Theme Variables */
+:root {
+  --neon-cyan: #0ff;
+  --neon-pink: #f0f;
+  --cyber-black: #00051d;
+  --cyber-gray: #1a1a2e;
+  --hologram-blue: #00f3ff;
+}
+
+/* Global Styles */
 :deep(.v-application) {
-  background: 
-    linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%),
+  background: radial-gradient(
+      ellipse at center,
+      var(--cyber-black) 0%,
+      #000 150%
+    ),
     repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.03) 0px,
@@ -93,203 +145,264 @@ export default {
       transparent 1px,
       transparent 10px
     ) !important;
-  position: relative;
+  font-family: "Oxanium", sans-serif;
 }
 
-/* App Bar Styling */
-:deep(.v-app-bar) {
-  background: rgba(10, 10, 10, 0.95) !important;
-  border-bottom: 2px solid rgba(0, 255, 255, 0.1);
+/* Header Styles */
+.cyber-header {
+  background: rgba(10, 10, 30, 0.98) !important;
+  border-bottom: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
   backdrop-filter: blur(10px);
 }
 
-/* Title with Glitch Effect */
-:deep(.v-toolbar-title) {
-  font-family: 'Space Mono', monospace;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.cyber-title {
+  font-family: "Space Mono", monospace;
+  letter-spacing: 3px;
   position: relative;
-  
-  &::before {
-    content: attr(data-text);
-    position: absolute;
-    left: -2px;
-    text-shadow: 2px 0 #0ff;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch 3s infinite linear alternate-reverse;
-  }
+  overflow: visible;
 }
 
-/* Navigation Links */
-.nav-link {
+.glitch-text {
   position: relative;
-  font-weight: 500;
-  letter-spacing: 1px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
+  color: var(--neon-cyan);
 
-  &:hover {
-    border-color: rgba(0, 255, 255, 0.3);
-    background: rgba(0, 255, 255, 0.05);
-    color: #0ff;
-  }
-
-  &::before {
-    content: '';
+  &::before,
+  &::after {
+    content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
-    width: 2px;
-    height: 0;
-    background: #0ff;
-    transition: height 0.3s ease;
+    opacity: 0.8;
   }
 
-  &:hover::before {
-    height: 100%;
+  &::before {
+    color: var(--neon-pink);
+    animation: glitch-1 2s infinite linear alternate-reverse;
   }
-}
 
-/* Container Styling */
-.v-container {
-  background: rgba(15, 15, 15, 0.7);
-  border: 1px solid rgba(0, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-
-  &:hover {
-    border-color: rgba(0, 255, 255, 0.2);
-    box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(0, 255, 255, 0.1);
+  &::after {
+    color: var(--hologram-blue);
+    animation: glitch-2 2s infinite linear alternate-reverse;
   }
 }
 
-/* Social Buttons */
-.social-btn {
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  background: transparent;
-  transition: all 0.3s ease;
+/* Navigation Buttons */
+.cyber-nav-btn {
+  position: relative;
+  margin: 0 1rem !important;
+  padding: 0.5rem 1.5rem !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .btn-content {
+    position: relative;
+    z-index: 2;
+    color: var(--neon-cyan);
+  }
+
+  .btn-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(0, 255, 255, 0.3) 0%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    border-color: #0ff;
     transform: translateY(-2px);
-    box-shadow: 
-      0 0 20px rgba(0, 255, 255, 0.2),
-      0 0 40px rgba(0, 255, 255, 0.1);
-  }
 
-  .v-icon {
-    color: rgba(255, 255, 255, 0.8);
-    transition: color 0.3s ease;
-  }
-
-  &:hover .v-icon {
-    color: #0ff;
+    .btn-glow {
+      opacity: 1;
+    }
   }
 }
 
-/* Footer Styling */
-:deep(.v-footer) {
-  background: rgba(10, 10, 10, 0.95) !important;
-  border-top: 2px solid rgba(0, 255, 255, 0.1);
+/* Mobile Menu */
+.cyber-menu-list {
+  background: rgba(10, 10, 30, 0.98) !important;
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
 }
 
-.footer-text {
-  font-family: 'Space Mono', monospace;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* Mobile Menu Items */
-:deep(.v-list-item.mobile-nav-item) {
-  margin: 4px;
-  border: 1px solid transparent;
+.cyber-menu-item {
+  position: relative;
+  padding: 1rem 2rem !important;
   transition: all 0.3s ease;
-  
+
+  .menu-text {
+    color: var(--neon-cyan);
+    position: relative;
+    z-index: 2;
+  }
+
+  .menu-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-cyan);
+    transition: width 0.3s ease;
+  }
+
   &:hover {
-    border-color: rgba(0, 255, 255, 0.3);
     background: rgba(0, 255, 255, 0.05) !important;
+
+    .menu-line {
+      width: 100%;
+    }
   }
 }
 
-/* Glitch Animation */
-@keyframes glitch {
+/* Main Content Area */
+.cyber-main {
+  padding-top: 64px !important;
+}
+
+.cyber-container {
+  max-width: 1440px !important;
+  padding: 2rem !important;
+  background: rgba(15, 15, 30, 0.7) !important;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Styles */
+.cyber-footer {
+  border-top: 1px solid var(--neon-cyan) !important;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1) !important;
+}
+
+.social-link {
+  position: relative;
+  display: inline-flex;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+
+  .social-icon {
+    color: var(--neon-cyan);
+    z-index: 2;
+  }
+
+  .social-hover {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--neon-cyan);
+    opacity: 0;
+    animation: socialGlow 1.5s infinite;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+
+    .social-hover {
+      opacity: 1;
+    }
+  }
+}
+
+.copyright-text {
+  position: relative;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1rem 0;
+  margin-top: 2rem;
+
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 255, 255, 0.1) 50%,
+      transparent 100%
+    );
+    animation: scan 5s linear infinite;
+  }
+}
+
+/* Animations */
+@keyframes glitch-1 {
   0% {
-    clip: rect(31px, 9999px, 94px, 0);
-    transform: skew(0.85deg);
+    transform: translate(2px, 0);
   }
-  5% {
-    clip: rect(70px, 9999px, 71px, 0);
-    transform: skew(0.85deg);
-  }
-  10% {
-    clip: rect(29px, 9999px, 92px, 0);
-    transform: skew(-0.85deg);
-  }
-  /* ... continue pattern ... */
   100% {
-    clip: rect(24px, 9999px, 36px, 0);
-    transform: skew(0.85deg);
+    transform: translate(-2px, 0);
   }
 }
 
-/* Responsive Adjustments */
+@keyframes glitch-2 {
+  0% {
+    transform: translate(-2px, 0);
+  }
+  100% {
+    transform: translate(2px, 0);
+  }
+}
+
+@keyframes socialGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px var(--neon-cyan);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-cyan);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 960px) {
+  .cyber-container {
+    padding: 1.5rem !important;
+  }
+
+  .cyber-nav-btn {
+    margin: 0 0.5rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+}
+
 @media (max-width: 600px) {
-  /* Reset all container paddings */
-  :deep(.v-container) {
-    padding: 16px !important;
+  .cyber-title {
+    font-size: 1.25rem !important;
+  }
+
+  .cyber-container {
+    padding: 1rem !important;
     margin: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    border: none !important;
   }
 
-  /* App bar specific styles */
-  :deep(.v-app-bar) {
-    .v-toolbar__content {
-      padding: 0 8px !important;
-    }
-  }
-
-  /* Main content area */
-  :deep(.v-main) {
+  .cyber-main {
     padding-top: 56px !important;
-    
-    .v-container {
-      padding: 16px !important;
-    }
   }
 
-  /* Footer adjustments */
-  :deep(.v-footer) {
-    .v-container {
-      padding: 8px !important;
-    }
-  }
-
-  /* Social buttons container */
-  .social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-  }
-
-  /* Individual social buttons */
-  .social-btn {
-    margin: 0 !important;
+  .social-link {
+    margin: 0 0.5rem;
+    padding: 0.25rem;
   }
 }
 
-/* Improve tablet layout */
-@media (min-width: 601px) and (max-width: 960px) {
-  :deep(.v-container) {
-    padding: 0 16px !important;
-  }
-
-  .nav-link {
-    padding: 0 8px !important;
-    font-size: 0.9rem;
+@media (min-width: 1920px) {
+  .cyber-container {
+    max-width: 1600px !important;
   }
 }
 </style>
